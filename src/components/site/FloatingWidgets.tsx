@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Accessibility, Cookie, MessageCircle, X, ArrowUp } from "lucide-react";
+import { Accessibility, Cookie, X, ArrowUp } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -87,12 +87,13 @@ export function FloatingWidgets() {
       </div>
 
       {/* Right floating: WhatsApp + Back to top */}
-      <div className="fixed bottom-4 right-3 z-40 flex flex-col items-end gap-2 sm:bottom-6 sm:right-4">
+      <div className="fixed bottom-4 right-3 z-40 flex flex-col items-end gap-3.5 sm:bottom-6 sm:right-4">
         {showTop && (
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="grid h-9 w-9 place-items-center rounded-full bg-[color:var(--brand-gold)] text-[color:var(--brand-petrol)] shadow-md hover:scale-105 transition sm:h-10 sm:w-10"
+            className="grid h-10 w-10 place-items-center rounded-full bg-[color:var(--brand-gold)] text-[color:var(--brand-petrol)] shadow-md hover:scale-105 transition sm:h-11 sm:w-11"
             aria-label="Voltar ao topo"
+            title="Voltar ao topo"
           >
             <ArrowUp className="h-4 w-4" />
           </button>
@@ -101,11 +102,13 @@ export function FloatingWidgets() {
           href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-[#25D366] p-2.5 text-white shadow-lg hover:brightness-110 sm:px-4 sm:py-3"
-          aria-label="Fale conosco no WhatsApp"
+          className="grid h-[52px] w-[52px] place-items-center rounded-full bg-[#25D366] text-white shadow-lg hover:brightness-110 transition sm:h-[58px] sm:w-[58px]"
+          aria-label="Fale pelo WhatsApp"
+          title="Fale pelo WhatsApp"
         >
-          <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
-          <span className="hidden sm:inline text-sm font-semibold">Fale conosco</span>
+          <svg viewBox="0 0 32 32" className="h-6 w-6 sm:h-7 sm:w-7" fill="currentColor" aria-hidden="true">
+            <path d="M19.11 17.28c-.3-.15-1.78-.88-2.05-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.55.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.07-.13-.28-.2-.58-.35zM16.02 4C9.42 4 4.06 9.36 4.06 15.96c0 2.11.55 4.16 1.6 5.98L4 28l6.22-1.62a11.9 11.9 0 0 0 5.8 1.48h.01c6.6 0 11.96-5.36 11.96-11.95 0-3.2-1.24-6.2-3.5-8.46A11.87 11.87 0 0 0 16.03 4zm0 21.86h-.01a9.87 9.87 0 0 1-5.04-1.38l-.36-.22-3.7.97.98-3.6-.23-.37a9.9 9.9 0 0 1-1.51-5.3c0-5.48 4.46-9.94 9.95-9.94 2.66 0 5.15 1.04 7.03 2.92a9.88 9.88 0 0 1 2.9 7.03c0 5.48-4.46 9.94-9.95 9.94z"/>
+          </svg>
         </a>
       </div>
 

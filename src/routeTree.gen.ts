@@ -22,6 +22,7 @@ import { Route as QuemSomosIndexRouteImport } from './routes/quem-somos.index'
 import { Route as ProjetosIndexRouteImport } from './routes/projetos.index'
 import { Route as NoticiasIndexRouteImport } from './routes/noticias.index'
 import { Route as QuemSomosTransparenciaRouteImport } from './routes/quem-somos.transparencia'
+import { Route as QuemSomosNossaHistoriaRouteImport } from './routes/quem-somos.nossa-historia'
 import { Route as QuemSomosEquipeRouteImport } from './routes/quem-somos.equipe'
 import { Route as ProjetosSlugRouteImport } from './routes/projetos.$slug'
 import { Route as NoticiasSlugRouteImport } from './routes/noticias.$slug'
@@ -91,6 +92,11 @@ const QuemSomosTransparenciaRoute = QuemSomosTransparenciaRouteImport.update({
   path: '/transparencia',
   getParentRoute: () => QuemSomosRoute,
 } as any)
+const QuemSomosNossaHistoriaRoute = QuemSomosNossaHistoriaRouteImport.update({
+  id: '/nossa-historia',
+  path: '/nossa-historia',
+  getParentRoute: () => QuemSomosRoute,
+} as any)
 const QuemSomosEquipeRoute = QuemSomosEquipeRouteImport.update({
   id: '/equipe',
   path: '/equipe',
@@ -120,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/noticias/$slug': typeof NoticiasSlugRoute
   '/projetos/$slug': typeof ProjetosSlugRoute
   '/quem-somos/equipe': typeof QuemSomosEquipeRoute
+  '/quem-somos/nossa-historia': typeof QuemSomosNossaHistoriaRoute
   '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
   '/noticias/': typeof NoticiasIndexRoute
   '/projetos/': typeof ProjetosIndexRoute
@@ -135,6 +142,7 @@ export interface FileRoutesByTo {
   '/noticias/$slug': typeof NoticiasSlugRoute
   '/projetos/$slug': typeof ProjetosSlugRoute
   '/quem-somos/equipe': typeof QuemSomosEquipeRoute
+  '/quem-somos/nossa-historia': typeof QuemSomosNossaHistoriaRoute
   '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
   '/noticias': typeof NoticiasIndexRoute
   '/projetos': typeof ProjetosIndexRoute
@@ -154,6 +162,7 @@ export interface FileRoutesById {
   '/noticias/$slug': typeof NoticiasSlugRoute
   '/projetos/$slug': typeof ProjetosSlugRoute
   '/quem-somos/equipe': typeof QuemSomosEquipeRoute
+  '/quem-somos/nossa-historia': typeof QuemSomosNossaHistoriaRoute
   '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
   '/noticias/': typeof NoticiasIndexRoute
   '/projetos/': typeof ProjetosIndexRoute
@@ -174,6 +183,7 @@ export interface FileRouteTypes {
     | '/noticias/$slug'
     | '/projetos/$slug'
     | '/quem-somos/equipe'
+    | '/quem-somos/nossa-historia'
     | '/quem-somos/transparencia'
     | '/noticias/'
     | '/projetos/'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/noticias/$slug'
     | '/projetos/$slug'
     | '/quem-somos/equipe'
+    | '/quem-somos/nossa-historia'
     | '/quem-somos/transparencia'
     | '/noticias'
     | '/projetos'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/noticias/$slug'
     | '/projetos/$slug'
     | '/quem-somos/equipe'
+    | '/quem-somos/nossa-historia'
     | '/quem-somos/transparencia'
     | '/noticias/'
     | '/projetos/'
@@ -318,6 +330,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuemSomosTransparenciaRouteImport
       parentRoute: typeof QuemSomosRoute
     }
+    '/quem-somos/nossa-historia': {
+      id: '/quem-somos/nossa-historia'
+      path: '/nossa-historia'
+      fullPath: '/quem-somos/nossa-historia'
+      preLoaderRoute: typeof QuemSomosNossaHistoriaRouteImport
+      parentRoute: typeof QuemSomosRoute
+    }
     '/quem-somos/equipe': {
       id: '/quem-somos/equipe'
       path: '/equipe'
@@ -372,12 +391,14 @@ const ProjetosRouteWithChildren = ProjetosRoute._addFileChildren(
 
 interface QuemSomosRouteChildren {
   QuemSomosEquipeRoute: typeof QuemSomosEquipeRoute
+  QuemSomosNossaHistoriaRoute: typeof QuemSomosNossaHistoriaRoute
   QuemSomosTransparenciaRoute: typeof QuemSomosTransparenciaRoute
   QuemSomosIndexRoute: typeof QuemSomosIndexRoute
 }
 
 const QuemSomosRouteChildren: QuemSomosRouteChildren = {
   QuemSomosEquipeRoute: QuemSomosEquipeRoute,
+  QuemSomosNossaHistoriaRoute: QuemSomosNossaHistoriaRoute,
   QuemSomosTransparenciaRoute: QuemSomosTransparenciaRoute,
   QuemSomosIndexRoute: QuemSomosIndexRoute,
 }
