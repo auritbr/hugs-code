@@ -28,7 +28,8 @@ function GaleriaPage() {
         title="Cada imagem, uma história"
         description="Registros das oficinas, feiras, encontros e vivências que compõem a memória viva do Ponto de Cultura."
         crumbs={[{ label: "Início", to: "/" }, { label: "Galeria" }]}
-        image="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=800&q=80"
+        tone="turquoise"
+        image="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=800&q=80"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
