@@ -59,33 +59,34 @@
 :root {
   --radius: 0.75rem;
   /* Brand palette — Ponto de Cultura */
-  --brand-petrol: oklch(0.32 0.055 220);      /* #073B4C */
-  --brand-turquoise: oklch(0.72 0.14 210);    /* #18B7D9 */
-  --brand-red: oklch(0.58 0.19 27);           /* #DF2B24 */
-  --brand-orange: oklch(0.72 0.17 55);        /* #F47C20 */
-  --brand-gold: oklch(0.82 0.14 85);          /* #FDB515 */
-  --brand-green: oklch(0.82 0.15 128);        /* #B7D94B */
-  --brand-sand: oklch(0.96 0.012 85);         /* #F5F0E8 */
+  --brand-petrol: #063B4A;
+  --brand-turquoise: #13B7DF;
+  --brand-red: #E41F26;
+  --brand-orange: #FF7A00;
+  --brand-gold: #FFB400;
+  --brand-green: #B8DA4A;
+  --brand-sand: #FAF8F3;
+  --brand-ink: #073742;
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.28 0.045 220);        /* #17313B */
+  --background: #FFFFFF;
+  --foreground: #073742;
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.28 0.045 220);
+  --card-foreground: #073742;
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.28 0.045 220);
-  --primary: oklch(0.32 0.055 220);           /* petrol */
-  --primary-foreground: oklch(0.98 0.005 85);
-  --secondary: oklch(0.96 0.012 85);          /* sand */
-  --secondary-foreground: oklch(0.28 0.045 220);
+  --popover-foreground: #073742;
+  --primary: #063B4A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FAF4E8;
+  --secondary-foreground: #073742;
   --muted: oklch(0.965 0.005 220);
   --muted-foreground: oklch(0.48 0.03 220);
-  --accent: oklch(0.72 0.14 210);             /* turquoise */
-  --accent-foreground: oklch(0.15 0.02 220);
-  --destructive: oklch(0.58 0.19 27);
-  --destructive-foreground: oklch(0.98 0.005 85);
+  --accent: #13B7DF;
+  --accent-foreground: #063B4A;
+  --destructive: #E41F26;
+  --destructive-foreground: #FFFFFF;
   --border: oklch(0.9 0.012 220);
   --input: oklch(0.9 0.012 220);
-  --ring: oklch(0.72 0.14 210);
+  --ring: #13B7DF;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -176,4 +177,30 @@ html[data-a11y-motion="off"] *, html[data-a11y-motion="off"] *::before, html[dat
 @utility craft-dots {
   background-image: radial-gradient(currentColor 1.5px, transparent 1.5px);
   background-size: 14px 14px;
+}
+@utility craft-stitch {
+  background-image: repeating-linear-gradient(90deg, currentColor 0 10px, transparent 10px 18px);
+  height: 3px;
+  border-radius: 2px;
+}
+@utility craft-weave {
+  background-image:
+    repeating-linear-gradient(0deg, color-mix(in oklab, currentColor 22%, transparent) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(90deg, color-mix(in oklab, currentColor 22%, transparent) 0 1px, transparent 1px 8px);
+}
+@utility craft-diagonal {
+  background-image: repeating-linear-gradient(45deg, currentColor 0 2px, transparent 2px 10px);
+}
+@utility rainbow-strip {
+  background: linear-gradient(90deg,
+    #E41F26 0 20%,
+    #FF7A00 20% 40%,
+    #FFB400 40% 60%,
+    #B8DA4A 60% 80%,
+    #13B7DF 80% 100%);
+}
+@utility brush-underline {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 8 C 40 2, 90 12, 140 5 S 195 8, 198 6' fill='none' stroke='currentColor' stroke-width='5' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }

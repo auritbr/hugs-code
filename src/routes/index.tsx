@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Users, HandHeart, Palette, Sprout, Leaf, Scissors, Brush, Package, Layers, TreeDeciduous, Recycle } from "lucide-react";
+import { ArrowRight, Users, HandHeart, Palette, Sprout, Leaf, Brush, Package, Layers, TreeDeciduous, Recycle } from "lucide-react";
 import { impactStats, partners } from "@/data/site";
 import { projects } from "@/data/projects";
 import { news } from "@/data/news";
+import { ThreadLine, StitchLine, BlobShape, ConcentricRings, WaveDivider, TriangleBand, NeedleIcon, YarnIcon, PotteryIcon, ScissorsIcon, DotBadge } from "@/components/site/CraftGraphics";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,53 +41,82 @@ function Index() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-16 right-1/3 h-72 w-72 rounded-full bg-[color:var(--brand-gold)]/10 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-[color:var(--brand-turquoise)]/10 blur-3xl" />
-      </div>
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:py-20 lg:px-8">
+    <section className="relative overflow-hidden bg-[color:var(--brand-sand)]">
+      <BlobShape className="pointer-events-none absolute -left-32 -top-24 h-[520px] w-[520px] opacity-30" color="var(--brand-gold)" />
+      <BlobShape className="pointer-events-none absolute -right-40 top-20 h-[520px] w-[520px] opacity-20" color="var(--brand-turquoise)" />
+      <ConcentricRings className="pointer-events-none absolute left-8 bottom-8 h-40 w-40 opacity-50" color="var(--brand-red)" />
+
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pt-10 pb-20 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-16 lg:pb-24 lg:px-8">
         <div className="flex flex-col justify-center">
-          <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
-            <Sparkles className="h-3 w-3" /> Ponto de Cultura
+          <span className="inline-flex w-fit items-center gap-2 rounded-full bg-[color:var(--brand-red)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white">
+            <span className="h-1.5 w-1.5 rounded-full bg-white" /> Ponto de Cultura
           </span>
-          <h1 className="mt-4 text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl lg:text-6xl">
-            Saberes que ganham forma, <span className="text-[color:var(--brand-red)]">histórias</span> que permanecem.
+          <h1 className="mt-5 font-display text-5xl font-extrabold leading-[0.98] text-[color:var(--brand-petrol)] sm:text-6xl lg:text-7xl">
+            Saberes que <span className="relative inline-block text-[color:var(--brand-red)]">
+              ganham forma
+              <span className="brush-underline absolute -bottom-2 left-0 h-3 w-full text-[color:var(--brand-gold)]" />
+            </span>, histórias que <em className="not-italic text-[color:var(--brand-turquoise)]">permanecem</em>.
           </h1>
-          <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Por meio do artesanato, da formação e da convivência, transformamos conhecimentos tradicionais em oportunidades, autonomia e desenvolvimento cultural.
+          <p className="mt-6 max-w-xl text-lg text-foreground/75">
+            Formação cultural, geração de renda e valorização dos saberes tradicionais por meio do artesanato feito à mão pela comunidade.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/quem-somos" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition">
+            <Link to="/quem-somos" className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-red)] px-6 py-3.5 text-sm font-bold text-white shadow-[0_6px_0_0_var(--brand-petrol)] hover:translate-y-[2px] hover:shadow-[0_4px_0_0_var(--brand-petrol)] transition-all">
               Conheça nossa história <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/projetos" className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold hover:bg-secondary transition">
+            <Link to="/projetos" className="inline-flex items-center gap-2 rounded-full border-2 border-[color:var(--brand-petrol)] bg-white px-6 py-3 text-sm font-bold text-[color:var(--brand-petrol)] hover:bg-[color:var(--brand-gold)] hover:border-[color:var(--brand-gold)] transition-all">
               Explore os projetos
             </Link>
           </div>
+
+          <div className="mt-10 flex items-center gap-6">
+            <div className="flex -space-x-3">
+              {["#E41F26","#FFB400","#13B7DF","#B8DA4A"].map(c => (
+                <span key={c} className="h-9 w-9 rounded-full border-2 border-white" style={{ background: c }} />
+              ))}
+            </div>
+            <div>
+              <div className="font-display text-2xl font-bold text-[color:var(--brand-petrol)]">1.200+ pessoas</div>
+              <div className="text-xs text-foreground/60">alcançadas pelas nossas oficinas e ações culturais</div>
+            </div>
+          </div>
         </div>
 
-        {/* Composição visual */}
-        <div className="relative h-[420px] lg:h-[520px]">
-          <div className="absolute inset-0">
-            <div className="absolute top-6 right-4 h-64 w-64 rounded-full bg-[color:var(--brand-red)]/15" />
-            <div className="absolute bottom-8 left-2 h-40 w-40 rounded-full border-[6px] border-[color:var(--brand-gold)]/60" />
-            <div className="absolute top-10 left-10 h-20 w-40 craft-dots text-[color:var(--brand-turquoise)] opacity-40" />
+        {/* Composição visual — colagem artesanal */}
+        <div className="relative h-[440px] lg:h-[560px]">
+          {/* fundos geométricos */}
+          <div className="absolute right-4 top-2 h-72 w-72 rounded-full bg-[color:var(--brand-red)]" />
+          <div className="absolute right-16 top-16 h-52 w-52 rounded-full border-[6px] border-dashed border-[color:var(--brand-gold)]" />
+          <div className="absolute bottom-4 left-8 h-24 w-24 rounded-full bg-[color:var(--brand-green)]" />
+          <TriangleBand className="absolute left-0 bottom-24 h-5 w-40" color="var(--brand-turquoise)" />
+
+          {/* foto principal — bordado */}
+          <div className="absolute right-2 top-8 h-80 w-64 overflow-hidden rounded-[45%_55%_50%_50%/55%_50%_50%_45%] border-8 border-white shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80" alt="Artesã bordando à mão" className="h-full w-full object-cover" />
           </div>
-          <div className="absolute right-6 top-10 h-80 w-64 overflow-hidden rounded-[40%_60%_45%_55%/45%_50%_50%_55%] shadow-xl">
-            <img src="https://images.unsplash.com/photo-1610478920392-95888b0e5b21?auto=format&fit=crop&w=800&q=80" alt="Artesã bordando" className="h-full w-full object-cover" />
+
+          {/* foto secundária — cerâmica */}
+          <div className="absolute bottom-2 left-2 h-56 w-56 overflow-hidden rounded-3xl border-8 border-white shadow-2xl rotate-[-4deg]">
+            <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=600&q=80" alt="Peça de cerâmica em modelagem" className="h-full w-full object-cover" />
           </div>
-          <div className="absolute bottom-4 left-2 h-52 w-52 overflow-hidden rounded-3xl border-8 border-background shadow-xl">
-            <img src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=600&q=80" alt="Modelagem em cerâmica" className="h-full w-full object-cover" />
+
+          {/* card flutuante */}
+          <div className="absolute bottom-16 right-4 rounded-2xl bg-white p-4 shadow-xl border-l-4 border-[color:var(--brand-turquoise)] rotate-2">
+            <div className="flex items-center gap-3">
+              <YarnIcon className="h-8 w-8 text-[color:var(--brand-red)]" />
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--brand-red)]">Oficinas ativas</div>
+                <div className="text-2xl font-extrabold text-[color:var(--brand-petrol)]">40 turmas</div>
+              </div>
+            </div>
           </div>
-          <div className="absolute bottom-8 right-2 rounded-2xl border border-border bg-card p-4 shadow-lg">
-            <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Impacto</div>
-            <div className="mt-1 text-2xl font-bold text-primary">1.200+</div>
-            <div className="text-xs text-muted-foreground">participantes alcançados</div>
-          </div>
+
+          {/* Pastilha decorativa */}
+          <DotBadge className="absolute top-4 left-4 h-14 w-14" color="var(--brand-gold)" />
         </div>
       </div>
-      <div className="craft-line text-primary/40" />
+
+      <WaveDivider className="h-12 w-full" color="#FFFFFF" />
     </section>
   );
 }
@@ -100,26 +130,35 @@ function Presentation() {
     "Desenvolvimento comunitário",
   ];
   return (
-    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <section className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div className="relative">
-          <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full bg-[color:var(--brand-gold)]/30" />
-          <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=800&q=80" alt="Oficina coletiva" className="relative rounded-2xl shadow-xl" />
+          <div className="absolute -left-6 -top-6 h-32 w-32 rounded-full bg-[color:var(--brand-orange)]" />
+          <div className="absolute -right-4 -bottom-4 h-20 w-20 rounded-full border-[6px] border-dashed border-[color:var(--brand-turquoise)]" />
+          <div className="relative overflow-hidden rounded-3xl border-8 border-white shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=800&q=80" alt="Mulheres em oficina de tecelagem" className="h-[420px] w-full object-cover" />
+          </div>
+          <StitchLine className="mt-6 h-2 w-64" color="var(--brand-red)" />
         </div>
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--brand-red)]">Institucional</span>
-          <h2 className="mt-2 text-3xl font-bold sm:text-4xl">Arte, cultura e transformação social</h2>
-          <p className="mt-4 text-muted-foreground">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-red)]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-red)]">
+            <NeedleIcon className="h-3 w-3" /> Institucional
+          </span>
+          <h2 className="mt-3 font-display text-4xl font-extrabold leading-tight text-[color:var(--brand-petrol)] sm:text-5xl">
+            Arte, cultura e <span className="text-[color:var(--brand-orange)]">transformação social</span>
+          </h2>
+          <p className="mt-5 text-foreground/75">
             Somos uma organização dedicada à valorização dos saberes artesanais como caminho para autonomia, convivência e desenvolvimento comunitário. Trabalhamos com processos formativos que aproximam gerações e fortalecem a produção cultural do território.
           </p>
-          <ul className="mt-6 space-y-2">
-            {areas.map((a) => (
-              <li key={a} className="flex items-center gap-2 text-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-red)]" /> {a}
+          <ul className="mt-6 space-y-2.5">
+            {areas.map((a, i) => (
+              <li key={a} className="flex items-center gap-3 text-sm">
+                <span className="h-3 w-3 rotate-45" style={{ background: ["#E41F26","#FF7A00","#FFB400","#B8DA4A","#13B7DF"][i] }} />
+                <span className="font-semibold text-foreground/85">{a}</span>
               </li>
             ))}
           </ul>
-          <Link to="/quem-somos" className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+          <Link to="/quem-somos" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-petrol)] px-5 py-3 text-sm font-bold text-white hover:bg-[color:var(--brand-red)] transition">
             Conheça quem somos <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -133,35 +172,36 @@ function MissionVision() {
     {
       title: "Missão",
       text: "Promover o desenvolvimento humano, cultural e social por meio do artesanato, da educação, da criatividade e da valorização dos conhecimentos comunitários.",
-      Icon: HandHeart, color: "var(--brand-red)",
+      Icon: HandHeart, color: "var(--brand-red)", bg: "#FFE9E9",
     },
     {
       title: "Visão",
       text: "Ser reconhecida como referência na preservação de saberes, na formação de artesãos e na criação de oportunidades por meio da cultura.",
-      Icon: Palette, color: "var(--brand-gold)",
+      Icon: Palette, color: "var(--brand-orange)", bg: "#FFEEDA",
     },
     {
       title: "Valores",
       text: "Respeito, ética, diversidade, cooperação, sustentabilidade, criatividade, transparência e compromisso com a comunidade.",
-      Icon: Users, color: "var(--brand-turquoise)",
+      Icon: Users, color: "var(--brand-turquoise)", bg: "#DDF4FB",
     },
   ];
   return (
-    <section className="bg-secondary/50 py-20">
+    <section className="relative bg-[color:var(--brand-petrol)] py-24 text-white overflow-hidden">
+      <div className="craft-weave absolute inset-0 text-white/50" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-[11px] font-semibold uppercase tracking-widest text-primary">Nossos princípios</span>
-          <h2 className="mt-2 text-3xl font-bold sm:text-4xl">Propósito que orienta cada ação</h2>
+          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-gold)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-[color:var(--brand-petrol)]">Nossos princípios</span>
+          <h2 className="mt-4 font-display text-4xl font-extrabold sm:text-5xl">Propósito que orienta cada <span className="text-[color:var(--brand-gold)]">ação</span></h2>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {cards.map(({ title, text, Icon, color }) => (
-            <div key={title} className="relative flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl" style={{ backgroundColor: `color-mix(in oklab, ${color} 20%, white)` }}>
-                <Icon className="h-6 w-6" style={{ color }} />
+        <div className="relative mt-14 grid gap-6 md:grid-cols-3">
+          {cards.map(({ title, text, Icon, color, bg }, i) => (
+            <div key={title} className="relative flex flex-col rounded-3xl p-7 text-[color:var(--brand-petrol)] shadow-xl transition hover:-translate-y-1" style={{ background: bg, transform: `rotate(${i === 1 ? 0 : i === 0 ? -1.5 : 1.5}deg)` }}>
+              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg" style={{ backgroundColor: color }}>
+                <Icon className="h-7 w-7" />
               </div>
-              <h3 className="text-xl font-bold">{title}</h3>
-              <p className="mt-3 flex-1 text-sm text-muted-foreground leading-relaxed">{text}</p>
-              <div className="mt-6 craft-line" style={{ color }} />
+              <h3 className="font-display text-2xl font-extrabold">{title}</h3>
+              <ThreadLine className="mt-2 h-2 w-24" color={color} />
+              <p className="mt-4 flex-1 text-sm leading-relaxed text-[color:var(--brand-petrol)]/80">{text}</p>
             </div>
           ))}
         </div>
@@ -171,20 +211,22 @@ function MissionVision() {
 }
 
 function ImpactNumbers() {
+  const colors = ["var(--brand-red)","var(--brand-orange)","var(--brand-gold)","var(--brand-green)","var(--brand-turquoise)"];
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--brand-red)]">Indicadores</span>
-          <h2 className="mt-2 text-3xl font-bold sm:text-4xl">Números que refletem um trabalho coletivo</h2>
+          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-turquoise)]/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-turquoise)]">Indicadores</span>
+          <h2 className="mt-3 font-display text-4xl font-extrabold text-[color:var(--brand-petrol)] sm:text-5xl">Números que refletem um <span className="text-[color:var(--brand-red)]">trabalho coletivo</span></h2>
         </div>
-        <p className="max-w-md text-sm text-muted-foreground">Cada dado abaixo representa ações construídas em parceria com participantes, educadores, comunidade e apoiadores.</p>
+        <p className="max-w-md text-sm text-foreground/70">Cada dado abaixo representa ações construídas em parceria com participantes, educadores, comunidade e apoiadores.</p>
       </div>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
-        {impactStats.map((s) => (
-          <div key={s.label} className="rounded-2xl border border-border bg-card p-6">
-            <div className="text-3xl font-bold text-primary sm:text-4xl">{s.value}</div>
-            <div className="mt-1 text-xs text-muted-foreground">{s.label}</div>
+        {impactStats.map((s, i) => (
+          <div key={s.label} className="group relative overflow-hidden rounded-3xl bg-white p-6 shadow-md ring-1 ring-black/5 transition hover:-translate-y-1" style={{ borderTop: `6px solid ${colors[i % colors.length]}` }}>
+            <div className="font-display text-4xl font-extrabold text-[color:var(--brand-petrol)] sm:text-5xl">{s.value}</div>
+            <div className="mt-2 text-xs font-semibold text-foreground/70">{s.label}</div>
+            <span className="absolute -bottom-4 -right-4 h-14 w-14 rounded-full opacity-15" style={{ background: colors[i % colors.length] }} />
           </div>
         ))}
       </div>
@@ -197,31 +239,31 @@ function FeaturedProjects() {
     red: "var(--brand-red)", orange: "var(--brand-orange)", green: "var(--brand-green)", petrol: "var(--brand-petrol)",
   };
   return (
-    <section className="bg-secondary/40 py-20">
+    <section className="relative bg-[color:var(--brand-sand)] py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <span className="text-[11px] font-semibold uppercase tracking-widest text-primary">Projetos</span>
-            <h2 className="mt-2 max-w-2xl text-3xl font-bold sm:text-4xl">Projetos que transformam saberes em oportunidades</h2>
+            <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-red)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white">Projetos</span>
+            <h2 className="mt-3 max-w-2xl font-display text-4xl font-extrabold text-[color:var(--brand-petrol)] sm:text-5xl">Projetos que transformam <span className="text-[color:var(--brand-red)]">saberes em oportunidades</span></h2>
           </div>
-          <Link to="/projetos" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+          <Link to="/projetos" className="inline-flex items-center gap-1 text-sm font-bold text-[color:var(--brand-red)] hover:underline">
             Ver todos os projetos <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {projects.map((p, i) => (
-            <article key={p.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+            <article key={p.slug} className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img src={p.hero} alt={p.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                <span className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest" style={{ color: colors[p.color] }}>{p.category}</span>
-                {i === 0 && <div className="absolute bottom-0 left-0 h-14 w-14 rounded-tr-full" style={{ backgroundColor: colors[p.color] }} />}
-                {i === 1 && <div className="absolute top-0 right-0 h-12 w-32 rounded-bl-3xl" style={{ backgroundColor: colors[p.color] }} />}
-                {i === 2 && <div className="absolute bottom-0 right-0 h-16 w-16 rounded-tl-3xl" style={{ backgroundColor: colors[p.color] }} />}
+                <span className="absolute top-4 left-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-md" style={{ backgroundColor: colors[p.color] }}>{p.category}</span>
+                <div className="absolute -bottom-8 -right-8 h-24 w-24 rounded-full opacity-70" style={{ backgroundColor: colors[p.color] }} />
+                <TriangleBand className="absolute bottom-0 left-0 h-3 w-full opacity-90" color={colors[p.color]} />
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-bold">{p.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.summary}</p>
-                <Link to="/projetos/$slug" params={{ slug: p.slug }} className="mt-5 inline-flex items-center gap-1 text-sm font-semibold" style={{ color: colors[p.color] }}>
+                <h3 className="font-display text-xl font-extrabold text-[color:var(--brand-petrol)]">{p.title}</h3>
+                <ThreadLine className="mt-2 h-2 w-16" color={colors[p.color]} />
+                <p className="mt-3 flex-1 text-sm text-foreground/75">{p.summary}</p>
+                <Link to="/projetos/$slug" params={{ slug: p.slug }} className="mt-5 inline-flex items-center gap-1 text-sm font-bold" style={{ color: colors[p.color] }}>
                   Conheça o projeto <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -235,31 +277,32 @@ function FeaturedProjects() {
 
 function Techniques() {
   const items = [
-    { name: "Bordado", Icon: Scissors, desc: "Pontos, cores e narrativas em tecido." },
-    { name: "Costura", Icon: Scissors, desc: "Peças utilitárias e criativas." },
-    { name: "Crochê", Icon: Layers, desc: "Tramas leves e delicadas." },
-    { name: "Cerâmica", Icon: Palette, desc: "Formas moldadas à mão." },
-    { name: "Pintura", Icon: Brush, desc: "Traços que revelam identidades." },
-    { name: "Madeira", Icon: TreeDeciduous, desc: "Objetos entalhados e utilitários." },
-    { name: "Papel", Icon: Package, desc: "Recorte, dobra e composição." },
-    { name: "Reciclagem", Icon: Recycle, desc: "Materiais que ganham nova vida." },
-    { name: "Fibras naturais", Icon: Leaf, desc: "Trançados sustentáveis." },
-    { name: "Acessórios", Icon: Sprout, desc: "Detalhes que carregam história." },
+    { name: "Bordado", Icon: NeedleIcon, desc: "Pontos, cores e narrativas em tecido.", color: "var(--brand-red)" },
+    { name: "Costura", Icon: ScissorsIcon, desc: "Peças utilitárias e criativas.", color: "var(--brand-orange)" },
+    { name: "Crochê", Icon: YarnIcon, desc: "Tramas leves e delicadas.", color: "var(--brand-gold)" },
+    { name: "Cerâmica", Icon: PotteryIcon, desc: "Formas moldadas à mão.", color: "var(--brand-green)" },
+    { name: "Pintura", Icon: Brush, desc: "Traços que revelam identidades.", color: "var(--brand-turquoise)" },
+    { name: "Madeira", Icon: TreeDeciduous, desc: "Objetos entalhados e utilitários.", color: "var(--brand-petrol)" },
+    { name: "Papel", Icon: Package, desc: "Recorte, dobra e composição.", color: "var(--brand-red)" },
+    { name: "Reciclagem", Icon: Recycle, desc: "Materiais que ganham nova vida.", color: "var(--brand-green)" },
+    { name: "Fibras naturais", Icon: Leaf, desc: "Trançados sustentáveis.", color: "var(--brand-orange)" },
+    { name: "Acessórios", Icon: Sprout, desc: "Detalhes que carregam história.", color: "var(--brand-turquoise)" },
   ];
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="mb-10 max-w-2xl">
-        <span className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--brand-red)]">Técnicas</span>
-        <h2 className="mt-2 text-3xl font-bold sm:text-4xl">Técnicas e saberes que atravessam o Ponto de Cultura</h2>
+        <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-orange)]/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-orange)]">Técnicas</span>
+        <h2 className="mt-3 font-display text-4xl font-extrabold text-[color:var(--brand-petrol)] sm:text-5xl">Técnicas e saberes que atravessam o <span className="text-[color:var(--brand-red)]">Ponto de Cultura</span></h2>
       </div>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        {items.map(({ name, Icon, desc }) => (
-          <div key={name} className="group rounded-xl border border-border bg-card p-4 transition hover:bg-secondary">
-            <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
-              <Icon className="h-5 w-5" />
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        {items.map(({ name, Icon, desc, color }) => (
+          <div key={name} className="group relative overflow-hidden rounded-2xl bg-white p-5 shadow-md ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-xl">
+            <div className="grid h-12 w-12 place-items-center rounded-xl text-white shadow-lg transition group-hover:scale-110" style={{ background: color }}>
+              <Icon className="h-6 w-6" color="#fff" />
             </div>
-            <div className="mt-3 font-semibold">{name}</div>
-            <p className="mt-1 text-xs text-muted-foreground">{desc}</p>
+            <div className="mt-4 font-display font-extrabold text-[color:var(--brand-petrol)]">{name}</div>
+            <p className="mt-1 text-xs text-foreground/65">{desc}</p>
+            <span className="absolute -bottom-4 -right-4 h-10 w-10 rounded-full opacity-15" style={{ background: color }} />
           </div>
         ))}
       </div>
@@ -274,20 +317,25 @@ function ProcessSteps() {
     { n: "03", title: "Produção das peças", text: "Desenvolvimento das obras com acompanhamento." },
     { n: "04", title: "Exposição e oportunidades", text: "Circulação das peças em feiras e mostras." },
   ];
+  const colors = ["var(--brand-red)","var(--brand-orange)","var(--brand-gold)","var(--brand-turquoise)"];
   return (
-    <section className="bg-primary text-primary-foreground py-20">
+    <section className="relative bg-[color:var(--brand-red)] py-24 text-white overflow-hidden">
+      <BlobShape className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 opacity-30" color="var(--brand-orange)" />
+      <div className="craft-diagonal pointer-events-none absolute inset-0 text-white/10" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-2xl">
-          <span className="text-[11px] font-semibold uppercase tracking-widest opacity-70">Processo</span>
-          <h2 className="mt-2 text-3xl font-bold sm:text-4xl">Como acontecem as ações</h2>
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white">Processo</span>
+          <h2 className="mt-3 font-display text-4xl font-extrabold sm:text-5xl">Como acontecem <span className="text-[color:var(--brand-gold)]">as ações</span></h2>
         </div>
         <div className="relative grid gap-6 md:grid-cols-4">
-          <div className="absolute top-6 left-8 right-8 hidden h-px bg-white/20 md:block" />
-          {steps.map((s) => (
-            <div key={s.n} className="relative">
-              <div className="grid h-12 w-12 place-items-center rounded-full bg-[color:var(--brand-gold)] text-primary font-bold">{s.n}</div>
-              <h3 className="mt-4 font-semibold">{s.title}</h3>
-              <p className="mt-1 text-sm opacity-80">{s.text}</p>
+          <div className="absolute top-7 left-14 right-14 hidden md:block" aria-hidden="true">
+            <StitchLine className="h-3 w-full text-white/40" color="rgba(255,255,255,0.6)" />
+          </div>
+          {steps.map((s, i) => (
+            <div key={s.n} className="relative rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+              <div className="grid h-14 w-14 place-items-center rounded-full font-display text-lg font-extrabold text-[color:var(--brand-petrol)] shadow-lg" style={{ background: colors[i] === "var(--brand-red)" ? "#FFB400" : colors[i] }}>{s.n}</div>
+              <h3 className="mt-4 font-display text-lg font-bold">{s.title}</h3>
+              <p className="mt-2 text-sm text-white/85">{s.text}</p>
             </div>
           ))}
         </div>
@@ -299,36 +347,37 @@ function ProcessSteps() {
 function GalleryPreview() {
   const imgs = [
     "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1610478920392-95888b0e5b21?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1607013407627-6ee814329547?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=600&q=80",
   ];
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--brand-red)]">Galeria</span>
-          <h2 className="mt-2 text-3xl font-bold sm:text-4xl">Momentos do Ponto de Cultura</h2>
+          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-gold)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-[color:var(--brand-petrol)]">Galeria</span>
+          <h2 className="mt-3 font-display text-4xl font-extrabold text-[color:var(--brand-petrol)] sm:text-5xl">Momentos do <span className="text-[color:var(--brand-turquoise)]">Ponto de Cultura</span></h2>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <span className="rounded-full bg-primary px-3 py-1 text-primary-foreground">2026</span>
-          <Link to="/galeria" search={{ ano: "2025" }} className="rounded-full border border-border px-3 py-1">2025</Link>
-          <Link to="/galeria" search={{ ano: "2024" }} className="rounded-full border border-border px-3 py-1">2024</Link>
+          <span className="rounded-full bg-[color:var(--brand-red)] px-4 py-1 font-bold text-white">2026</span>
+          <Link to="/galeria" search={{ ano: "2025" }} className="rounded-full border-2 border-[color:var(--brand-petrol)]/20 px-4 py-1 font-semibold hover:border-[color:var(--brand-red)] hover:text-[color:var(--brand-red)]">2025</Link>
+          <Link to="/galeria" search={{ ano: "2024" }} className="rounded-full border-2 border-[color:var(--brand-petrol)]/20 px-4 py-1 font-semibold hover:border-[color:var(--brand-red)] hover:text-[color:var(--brand-red)]">2024</Link>
         </div>
       </div>
-      <div className="grid gap-3 md:grid-cols-4 md:grid-rows-2">
-        <div className="md:col-span-2 md:row-span-2 overflow-hidden rounded-2xl">
+      <div className="grid gap-4 md:grid-cols-4 md:grid-rows-2">
+        <div className="md:col-span-2 md:row-span-2 overflow-hidden rounded-3xl border-4 border-white shadow-xl relative">
           <img src={imgs[0]} alt="" className="h-full w-full object-cover" />
+          <TriangleBand className="absolute bottom-0 left-0 h-3 w-full" color="var(--brand-red)" />
         </div>
         {imgs.slice(1).map((s, i) => (
-          <div key={i} className="overflow-hidden rounded-2xl aspect-square md:aspect-auto">
+          <div key={i} className="overflow-hidden rounded-3xl aspect-square md:aspect-auto border-4 border-white shadow-md" style={{ background: ["#FFB400","#13B7DF","#E41F26","#B8DA4A"][i] }}>
             <img src={s} alt="" className="h-full w-full object-cover" />
           </div>
         ))}
       </div>
       <div className="mt-8">
-        <Link to="/galeria" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+        <Link to="/galeria" className="inline-flex items-center gap-1 text-sm font-bold text-[color:var(--brand-red)] hover:underline">
           Ver galeria completa <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
@@ -339,32 +388,36 @@ function GalleryPreview() {
 function NewsSection() {
   const recent = news.slice(0, 3);
   return (
-    <section className="bg-secondary/40 py-20">
+    <section className="bg-[color:var(--brand-sand)] py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <span className="text-[11px] font-semibold uppercase tracking-widest text-primary">Notícias</span>
-            <h2 className="mt-2 text-3xl font-bold sm:text-4xl">Últimas atualizações</h2>
+            <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-turquoise)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white">Notícias</span>
+            <h2 className="mt-3 font-display text-4xl font-extrabold text-[color:var(--brand-petrol)] sm:text-5xl">Últimas <span className="text-[color:var(--brand-orange)]">atualizações</span></h2>
           </div>
-          <Link to="/noticias" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">Ver todas as notícias <ArrowRight className="h-4 w-4" /></Link>
+          <Link to="/noticias" className="inline-flex items-center gap-1 text-sm font-bold text-[color:var(--brand-red)] hover:underline">Ver todas as notícias <ArrowRight className="h-4 w-4" /></Link>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {recent.map((n) => (
-            <article key={n.slug} className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-              <div className="aspect-[16/10] overflow-hidden"><img src={n.cover} alt="" className="h-full w-full object-cover" /></div>
-              <div className="flex flex-1 flex-col p-5">
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="rounded-full bg-primary/10 px-2 py-0.5 font-semibold text-primary">{n.tag}</span>
+          {recent.map((n, i) => {
+            const tagColor = ["var(--brand-red)","var(--brand-orange)","var(--brand-turquoise)"][i % 3];
+            return (
+            <article key={n.slug} className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl">
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <img src={n.cover} alt="" className="h-full w-full object-cover" />
+                <span className="absolute top-3 left-3 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow" style={{ background: tagColor }}>{n.tag}</span>
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex items-center gap-2 text-xs text-foreground/60">
                   <span>{new Date(n.date).toLocaleDateString("pt-BR")}</span>
                 </div>
-                <h3 className="mt-3 line-clamp-2 text-lg font-bold">{n.title}</h3>
-                <p className="mt-2 flex-1 line-clamp-3 text-sm text-muted-foreground">{n.excerpt}</p>
-                <Link to="/noticias/$slug" params={{ slug: n.slug }} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                <h3 className="mt-2 line-clamp-2 font-display text-lg font-extrabold text-[color:var(--brand-petrol)]">{n.title}</h3>
+                <p className="mt-2 flex-1 line-clamp-3 text-sm text-foreground/75">{n.excerpt}</p>
+                <Link to="/noticias/$slug" params={{ slug: n.slug }} className="mt-4 inline-flex items-center gap-1 text-sm font-bold" style={{ color: tagColor }}>
                   Leia a notícia <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </article>
-          ))}
+          );})}
         </div>
       </div>
     </section>
@@ -374,18 +427,20 @@ function NewsSection() {
 function Testimonial() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <div className="grid gap-10 rounded-3xl bg-[color:var(--brand-sand)] p-8 lg:grid-cols-[280px_1fr] lg:items-center lg:p-12">
-        <div className="mx-auto h-56 w-56 overflow-hidden rounded-full border-8 border-white shadow-lg">
-          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" alt="Participante" className="h-full w-full object-cover" />
+      <div className="relative grid gap-10 rounded-[2.5rem] bg-gradient-to-br from-[color:var(--brand-gold)] to-[color:var(--brand-orange)] p-8 shadow-2xl lg:grid-cols-[300px_1fr] lg:items-center lg:p-12">
+        <div className="craft-dots absolute inset-0 rounded-[2.5rem] text-white/25" />
+        <div className="relative mx-auto h-60 w-60 overflow-hidden rounded-full border-8 border-white shadow-xl">
+          <img src="https://images.unsplash.com/photo-1594736797933-d0dabf9f2b57?auto=format&fit=crop&w=600&q=80" alt="Participante" className="h-full w-full object-cover" />
         </div>
-        <div>
-          <div className="text-5xl font-bold text-[color:var(--brand-red)]">“</div>
-          <p className="text-lg italic text-foreground leading-relaxed">
+        <div className="relative">
+          <div className="font-display text-7xl font-extrabold leading-none text-[color:var(--brand-red)]">“</div>
+          <p className="mt-2 font-display text-xl font-medium italic leading-relaxed text-[color:var(--brand-petrol)] sm:text-2xl">
             Entrei buscando aprender bordado e encontrei uma comunidade. Hoje ensino, produzo e participo de feiras. O Ponto de Cultura mudou minha relação com o trabalho.
           </p>
-          <div className="mt-4">
-            <div className="font-semibold">Dona Célia</div>
-            <div className="text-sm text-muted-foreground">Participante e educadora — Fios da Memória</div>
+          <ThreadLine className="mt-5 h-3 w-32" color="var(--brand-red)" />
+          <div className="mt-3">
+            <div className="font-display text-lg font-bold text-[color:var(--brand-petrol)]">Dona Célia</div>
+            <div className="text-sm text-[color:var(--brand-petrol)]/70">Participante e educadora — Fios da Memória</div>
           </div>
         </div>
       </div>
@@ -395,15 +450,15 @@ function Testimonial() {
 
 function Partners() {
   return (
-    <section className="border-y border-border bg-background py-14">
+    <section className="bg-white py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-6 text-center">
-          <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Parceiros e apoiadores</span>
-          <p className="mt-2 text-sm text-muted-foreground">Nossas ações são construídas em parceria com organizações e apoiadores que fortalecem a cultura.</p>
+        <div className="mb-8 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-petrol)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white">Parceiros e apoiadores</span>
+          <p className="mt-3 text-sm text-foreground/70">Nossas ações são construídas em parceria com organizações e apoiadores que fortalecem a cultura.</p>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-70">
-          {partners.map((p) => (
-            <span key={p} className="text-sm font-semibold tracking-wide text-foreground/70">{p}</span>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          {partners.map((p, i) => (
+            <span key={p} className="rounded-full border-2 px-4 py-2 text-sm font-bold" style={{ borderColor: ["#E41F26","#FF7A00","#FFB400","#B8DA4A","#13B7DF","#063B4A"][i % 6], color: "#063B4A" }}>{p}</span>
           ))}
         </div>
       </div>
@@ -413,24 +468,26 @@ function Partners() {
 
 function FinalCTA() {
   return (
-    <section className="relative overflow-hidden bg-primary text-primary-foreground">
-      <div className="craft-dots absolute inset-0 opacity-10 text-white" />
-      <div className="absolute -right-16 top-10 h-64 w-64 rounded-full border-[10px] border-[color:var(--brand-gold)]/50" />
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
+    <section className="relative overflow-hidden bg-[color:var(--brand-turquoise)] text-white">
+      <div className="craft-diagonal absolute inset-0 text-white/15" aria-hidden="true" />
+      <BlobShape className="absolute -right-32 -bottom-32 h-96 w-96 opacity-30" color="var(--brand-gold)" />
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-24 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
         <div>
-          <h2 className="max-w-3xl text-3xl font-bold sm:text-4xl">
-            Cada peça começa com um gesto. Cada transformação começa com uma oportunidade.
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em]">Junte-se a nós</span>
+          <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-5xl">
+            Cada peça começa com um <span className="text-[color:var(--brand-gold)]">gesto</span>. Cada transformação começa com uma <span className="text-[color:var(--brand-red)]">oportunidade</span>.
           </h2>
-          <p className="mt-4 max-w-xl text-primary-foreground/80">Conheça os projetos ou entre em contato para colaborar com o Ponto de Cultura.</p>
+          <p className="mt-5 max-w-xl text-white/90">Conheça os projetos ou entre em contato para colaborar com o Ponto de Cultura.</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/projetos" className="rounded-full bg-[color:var(--brand-gold)] px-5 py-3 text-sm font-semibold text-primary">Conheça os projetos</Link>
-            <Link to="/contato" className="rounded-full border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">Entre em contato</Link>
+            <Link to="/projetos" className="rounded-full bg-[color:var(--brand-red)] px-6 py-3.5 text-sm font-bold text-white shadow-[0_6px_0_0_var(--brand-petrol)] hover:translate-y-[2px] hover:shadow-[0_4px_0_0_var(--brand-petrol)] transition">Conheça os projetos</Link>
+            <Link to="/contato" className="rounded-full border-2 border-white px-6 py-3 text-sm font-bold hover:bg-white hover:text-[color:var(--brand-turquoise)] transition">Entre em contato</Link>
           </div>
         </div>
-        <div className="relative hidden h-64 w-64 lg:block">
-          <div className="absolute inset-0 overflow-hidden rounded-full border-8 border-white/20">
-            <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=600&q=80" alt="Mãos produzindo" className="h-full w-full object-cover" />
+        <div className="relative hidden h-72 w-72 lg:block">
+          <div className="absolute inset-0 overflow-hidden rounded-full border-8 border-white shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1610478920392-95888b0e5b21?auto=format&fit=crop&w=600&q=80" alt="Mãos bordando" className="h-full w-full object-cover" />
           </div>
+          <DotBadge className="absolute -top-4 -left-4 h-16 w-16" color="var(--brand-red)" />
         </div>
       </div>
     </section>

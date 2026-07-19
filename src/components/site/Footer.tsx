@@ -1,39 +1,32 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Youtube, Linkedin, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { site, partners } from "@/data/site";
+import { Logo } from "./Logo";
+import { WaveDivider, ThreadLine } from "./CraftGraphics";
 
 export function Footer() {
   return (
-    <footer className="mt-24 bg-primary text-primary-foreground">
-      <div className="craft-line text-[color:var(--brand-gold)] opacity-80" />
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <footer className="relative mt-24 bg-[color:var(--brand-petrol)] text-white">
+      <WaveDivider className="absolute -top-[1px] left-0 h-10 w-full text-[color:var(--brand-petrol)]" flip color="var(--brand-petrol)" />
+      <div className="rainbow-strip h-2 w-full" aria-hidden="true" />
+      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2.5">
-              <span className="grid h-10 w-10 place-items-center rounded-md bg-[color:var(--brand-gold)] text-primary">
-                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 12c2 -4 6 -6 8 -6s6 2 8 6c-2 4 -6 6 -8 6s-6 -2 -8 -6z" />
-                  <circle cx="12" cy="12" r="2.5" fill="currentColor" />
-                </svg>
-              </span>
-              <div className="leading-tight">
-                <div className="text-[11px] uppercase tracking-[0.14em] opacity-70">Ponto de</div>
-                <div className="text-lg font-bold">Cultura</div>
-              </div>
-            </div>
+            <Logo variant="light" />
             <p className="mt-4 max-w-sm text-sm opacity-80">
-              Organização dedicada ao artesanato, à formação cultural e à valorização dos saberes tradicionais no território.
+              Ponto de Cultura dedicado ao artesanato, à formação cultural, à geração de renda e à valorização dos saberes tradicionais.
             </p>
+            <ThreadLine className="mt-6 h-3 w-56" color="var(--brand-gold)" />
             <div className="mt-6 flex gap-2">
-              <a href={site.socials.instagram} className="rounded-full bg-white/10 p-2 hover:bg-white/20" aria-label="Instagram"><Instagram className="h-4 w-4" /></a>
-              <a href={site.socials.facebook} className="rounded-full bg-white/10 p-2 hover:bg-white/20" aria-label="Facebook"><Facebook className="h-4 w-4" /></a>
-              <a href={site.socials.youtube} className="rounded-full bg-white/10 p-2 hover:bg-white/20" aria-label="YouTube"><Youtube className="h-4 w-4" /></a>
-              <a href={site.socials.linkedin} className="rounded-full bg-white/10 p-2 hover:bg-white/20" aria-label="LinkedIn"><Linkedin className="h-4 w-4" /></a>
+              <a href={site.socials.instagram} className="grid h-9 w-9 place-items-center rounded-full bg-[color:var(--brand-red)] hover:scale-110 transition" aria-label="Instagram"><Instagram className="h-4 w-4" /></a>
+              <a href={site.socials.facebook} className="grid h-9 w-9 place-items-center rounded-full bg-[color:var(--brand-turquoise)] hover:scale-110 transition" aria-label="Facebook"><Facebook className="h-4 w-4" /></a>
+              <a href={site.socials.youtube} className="grid h-9 w-9 place-items-center rounded-full bg-[color:var(--brand-orange)] hover:scale-110 transition" aria-label="YouTube"><Youtube className="h-4 w-4" /></a>
+              <a href={site.socials.linkedin} className="grid h-9 w-9 place-items-center rounded-full bg-[color:var(--brand-gold)] text-[color:var(--brand-petrol)] hover:scale-110 transition" aria-label="LinkedIn"><Linkedin className="h-4 w-4" /></a>
             </div>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider opacity-80">Navegação</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[color:var(--brand-gold)]">Navegação</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li><Link to="/" className="opacity-80 hover:opacity-100">Início</Link></li>
               <li><Link to="/quem-somos" className="opacity-80 hover:opacity-100">Quem Somos</Link></li>
@@ -44,7 +37,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider opacity-80">Projetos</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[color:var(--brand-gold)]">Projetos</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li><Link to="/projetos/fios-da-memoria" className="opacity-80 hover:opacity-100">Fios da Memória</Link></li>
               <li><Link to="/projetos/barro-forma-identidade" className="opacity-80 hover:opacity-100">Barro, Forma e Identidade</Link></li>
@@ -54,7 +47,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider opacity-80">Contato</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[color:var(--brand-gold)]">Contato</h3>
             <ul className="mt-4 space-y-3 text-sm opacity-90">
               <li className="flex gap-2"><MapPin className="h-4 w-4 shrink-0 mt-0.5" />{site.address}</li>
               <li className="flex gap-2"><Phone className="h-4 w-4 shrink-0 mt-0.5" />{site.phone}</li>
@@ -64,16 +57,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8">
-          <div className="text-xs uppercase tracking-widest opacity-70">Parceiros e apoiadores</div>
-          <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3 text-sm opacity-80">
+        <div className="mt-12 pt-8">
+          <div className="craft-stitch mb-6 text-[color:var(--brand-gold)]/60" />
+          <div className="text-xs uppercase tracking-widest text-[color:var(--brand-gold)]">Parceiros e apoiadores</div>
+          <div className="mt-4 flex flex-wrap gap-2">
             {partners.map((p) => (
-              <span key={p}>{p}</span>
+              <span key={p} className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs">{p}</span>
             ))}
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs opacity-75 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs opacity-80 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Ponto de Cultura. Todos os direitos reservados.</p>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <Link to="/politica-de-privacidade" className="hover:opacity-100">Política de Privacidade</Link>
