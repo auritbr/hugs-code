@@ -38,6 +38,7 @@ function Transparencia() {
         title="Transparência que fortalece a confiança"
         description="Reunimos aqui documentos institucionais, relatórios e políticas que orientam nossa atuação e prestação de contas."
         crumbs={[{ label: "Início", to: "/" }, { label: "Quem Somos", to: "/quem-somos" }, { label: "Transparência" }]}
+        tone="petrol"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">

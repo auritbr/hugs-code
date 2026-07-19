@@ -38,7 +38,8 @@ function NoticiasIndex() {
         title="O que acontece no Ponto de Cultura"
         description="Acompanhe as ações, oficinas, feiras, conquistas e histórias que emergem do território."
         crumbs={[{ label: "Início", to: "/" }, { label: "Notícias" }]}
-        image="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=800&q=80"
+        tone="orange"
+        image="https://images.unsplash.com/photo-1470309864661-68328b2cd0a5?auto=format&fit=crop&w=800&q=80"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">

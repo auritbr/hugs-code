@@ -1,56 +1,75 @@
 import { Link } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
+import { BlobShape, ConcentricRings, ThreadLine, TriangleBand } from "./CraftGraphics";
 
 type Crumb = { label: string; to?: string };
 
 export function PageHeader({
-  eyebrow, title, description, crumbs, image,
+  eyebrow, title, description, crumbs, image, tone = "red",
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   crumbs?: Crumb[];
   image?: string;
+  tone?: "red" | "turquoise" | "gold" | "orange" | "petrol" | "green";
 }) {
+  const toneMap: Record<string, string> = {
+    red: "var(--brand-red)",
+    turquoise: "var(--brand-turquoise)",
+    gold: "var(--brand-gold)",
+    orange: "var(--brand-orange)",
+    petrol: "var(--brand-petrol)",
+    green: "var(--brand-green)",
+  };
+  const color = toneMap[tone];
   return (
-    <section className="relative overflow-hidden border-b border-border bg-secondary">
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
-        <div className="absolute -top-16 -right-16 h-72 w-72 rounded-full bg-[color:var(--brand-red)]" />
-        <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[color:var(--brand-turquoise)]" />
+    <section className="relative overflow-hidden bg-[color:var(--brand-sand)]">
+      {/* fundo decorativo */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <BlobShape className="absolute -top-24 -right-24 h-[420px] w-[420px] opacity-25" color={color} />
+        <ConcentricRings className="absolute -bottom-16 -left-10 h-80 w-80 opacity-40" color="var(--brand-petrol)" />
+        <div className="absolute right-8 bottom-6 h-3 w-24 craft-diagonal text-[color:var(--brand-red)] opacity-40" />
       </div>
-      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 pt-12 pb-16 sm:px-6 sm:pt-14 sm:pb-20 lg:px-8">
         {crumbs && crumbs.length > 0 && (
-          <nav aria-label="breadcrumb" className="mb-4 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
+          <nav aria-label="breadcrumb" className="mb-6 flex flex-wrap items-center gap-1.5 text-xs text-[color:var(--brand-petrol)]/70">
             {crumbs.map((c, i) => (
               <span key={i} className="inline-flex items-center gap-1.5">
-                {c.to ? <Link to={c.to} className="hover:text-primary">{c.label}</Link> : <span className="text-foreground">{c.label}</span>}
+                {c.to ? <Link to={c.to} className="hover:text-[color:var(--brand-red)]">{c.label}</Link> : <span className="font-semibold text-foreground">{c.label}</span>}
                 {i < crumbs.length - 1 && <ChevronRight className="h-3 w-3" />}
               </span>
             ))}
           </nav>
         )}
-        <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
           <div className="max-w-3xl">
             {eyebrow && (
-              <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
+              <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white" style={{ backgroundColor: color }}>
+                <span className="h-1.5 w-1.5 rounded-full bg-white" />
                 {eyebrow}
               </span>
             )}
-            <h1 className="mt-3 text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl">
+            <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] text-[color:var(--brand-petrol)] sm:text-5xl md:text-6xl">
               {title}
             </h1>
-            {description && <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">{description}</p>}
+            <ThreadLine className="mt-5 h-3 w-40" color={color} />
+            {description && <p className="mt-5 max-w-2xl text-base text-foreground/75 sm:text-lg">{description}</p>}
           </div>
           {image && (
-            <div className="hidden lg:block">
-              <div className="relative h-40 w-56 overflow-hidden rounded-xl border border-border shadow-lg">
-                <img src={image} alt="" className="h-full w-full object-cover" />
+            <div className="relative hidden lg:block">
+              <div className="relative aspect-square w-full max-w-md">
+                <div className="absolute -top-4 -right-4 h-24 w-24 rounded-full" style={{ backgroundColor: color }} />
+                <div className="absolute -bottom-4 -left-4 h-16 w-16 rounded-full bg-[color:var(--brand-gold)]" />
+                <div className="relative h-full w-full overflow-hidden rounded-[45%_55%_50%_50%/55%_50%_50%_45%] border-8 border-white shadow-2xl">
+                  <img src={image} alt="" className="h-full w-full object-cover" />
+                </div>
               </div>
             </div>
           )}
         </div>
       </div>
-      <div className="craft-line text-primary/40" />
+      <TriangleBand className="h-4 w-full" color={color} />
     </section>
   );
 }

@@ -67,31 +67,31 @@ export function FloatingWidgets() {
   return (
     <>
       {/* Left floating buttons */}
-      <div className="fixed bottom-4 left-4 z-40 flex flex-col gap-2">
+      <div className="fixed bottom-3 left-3 z-40 flex flex-col gap-2 sm:bottom-4 sm:left-4">
         <button
           onClick={() => setOpenCookie(true)}
-          className="group grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90"
+          className="group grid h-10 w-10 place-items-center rounded-full bg-[color:var(--brand-petrol)] text-white shadow-lg hover:scale-105 transition sm:h-11 sm:w-11"
           aria-label="Preferências de cookies"
           title="Preferências de cookies"
         >
-          <Cookie className="h-5 w-5" />
+          <Cookie className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
         <button
           onClick={() => setOpenA11y(true)}
-          className="grid h-11 w-11 place-items-center rounded-full bg-[color:var(--brand-turquoise)] text-primary shadow-lg hover:opacity-90"
+          className="grid h-10 w-10 place-items-center rounded-full bg-[color:var(--brand-turquoise)] text-white shadow-lg hover:scale-105 transition sm:h-11 sm:w-11"
           aria-label="Acessibilidade"
           title="Acessibilidade"
         >
-          <Accessibility className="h-5 w-5" />
+          <Accessibility className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
       </div>
 
       {/* Right floating: WhatsApp + Back to top */}
-      <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2">
+      <div className="fixed bottom-3 right-3 z-40 flex flex-col items-end gap-2 sm:bottom-4 sm:right-4">
         {showTop && (
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="grid h-10 w-10 place-items-center rounded-full bg-secondary text-foreground shadow-md hover:bg-secondary/80"
+            className="grid h-9 w-9 place-items-center rounded-full bg-[color:var(--brand-gold)] text-[color:var(--brand-petrol)] shadow-md hover:scale-105 transition sm:h-10 sm:w-10"
             aria-label="Voltar ao topo"
           >
             <ArrowUp className="h-4 w-4" />
@@ -101,10 +101,10 @@ export function FloatingWidgets() {
           href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-3 py-3 text-white shadow-lg hover:brightness-110 sm:px-4"
+          className="inline-flex items-center gap-2 rounded-full bg-[#25D366] p-2.5 text-white shadow-lg hover:brightness-110 sm:px-4 sm:py-3"
           aria-label="Fale conosco no WhatsApp"
         >
-          <MessageCircle className="h-5 w-5" />
+          <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
           <span className="hidden sm:inline text-sm font-semibold">Fale conosco</span>
         </a>
       </div>

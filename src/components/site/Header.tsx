@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo } from "./Logo";
 
 const nav = [
   { label: "Início", to: "/" },
@@ -43,34 +44,24 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full border-b border-transparent bg-background/90 backdrop-blur transition-all",
-        scrolled && "border-border shadow-[0_1px_0_0_var(--color-border)]",
+        "sticky top-0 z-40 w-full bg-background/95 backdrop-blur transition-all",
+        scrolled && "shadow-[0_2px_18px_-8px_rgba(6,59,74,0.35)]",
       )}
     >
+      <div className="rainbow-strip h-1.5 w-full" aria-hidden="true" />
       <a href="#conteudo" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground">
         Pular para o conteúdo
       </a>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2.5" aria-label="Ponto de Cultura — início">
-          <span className="grid h-9 w-9 place-items-center rounded-md bg-primary text-primary-foreground">
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M4 12c2 -4 6 -6 8 -6s6 2 8 6c-2 4 -6 6 -8 6s-6 -2 -8 -6z" />
-              <circle cx="12" cy="12" r="2.5" fill="currentColor" />
-            </svg>
-          </span>
-          <span className="flex flex-col leading-tight">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Ponto de</span>
-            <span className="text-base font-bold text-foreground">Cultura</span>
-          </span>
-        </Link>
+        <Logo />
 
         <nav className="hidden lg:flex items-center gap-1">
           {nav.map((item) => (
             <div key={item.to} className="group relative">
               <Link
                 to={item.to}
-                className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-secondary transition"
-                activeProps={{ className: "text-primary bg-secondary" }}
+                className="inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-semibold text-foreground/75 hover:text-[color:var(--brand-red)] hover:bg-[color:var(--brand-red)]/8 transition"
+                activeProps={{ className: "text-[color:var(--brand-red)] bg-[color:var(--brand-red)]/10" }}
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
@@ -78,13 +69,14 @@ export function Header() {
               </Link>
               {item.children && (
                 <div className="invisible absolute left-0 top-full min-w-[240px] pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">
-                  <div className="rounded-lg border border-border bg-popover p-2 shadow-lg">
+                  <div className="rounded-2xl border border-border bg-popover p-2 shadow-xl">
+                    <div className="craft-stitch mx-3 mb-2 mt-1 text-[color:var(--brand-red)]/60" />
                     {item.children.map((c) => (
                       <Link
                         key={c.to}
                         to={c.to}
-                        className="block rounded-md px-3 py-2 text-sm text-foreground/80 hover:bg-secondary hover:text-primary"
-                        activeProps={{ className: "bg-secondary text-primary" }}
+                        className="block rounded-lg px-3 py-2 text-sm text-foreground/80 hover:bg-[color:var(--brand-gold)]/15 hover:text-[color:var(--brand-red)]"
+                        activeProps={{ className: "bg-[color:var(--brand-gold)]/15 text-[color:var(--brand-red)]" }}
                       >
                         {c.label}
                       </Link>
@@ -99,7 +91,7 @@ export function Header() {
         <div className="hidden lg:block">
           <Link
             to="/contato"
-            className="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition"
+            className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-red)] px-5 py-2.5 text-sm font-bold text-white shadow-[0_6px_0_0_var(--brand-petrol)] hover:translate-y-[2px] hover:shadow-[0_4px_0_0_var(--brand-petrol)] transition-all"
           >
             Fale conosco
           </Link>
@@ -107,7 +99,7 @@ export function Header() {
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-border"
+          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-[color:var(--brand-petrol)] text-[color:var(--brand-petrol)]"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
         >
@@ -116,10 +108,10 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-border bg-background max-h-[calc(100vh-64px)] overflow-y-auto">
+        <div className="lg:hidden border-t border-border bg-[color:var(--brand-sand)] max-h-[calc(100vh-64px)] overflow-y-auto">
           <nav className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
             {nav.map((item) => (
-              <div key={item.to} className="border-b border-border last:border-0">
+              <div key={item.to} className="border-b border-dashed border-[color:var(--brand-petrol)]/20 last:border-0">
                 <div className="flex items-center justify-between">
                   <Link
                     to={item.to}
@@ -145,7 +137,7 @@ export function Header() {
                         key={c.to}
                         to={c.to}
                         onClick={() => setOpen(false)}
-                        className="block py-2 text-sm text-muted-foreground hover:text-primary"
+                        className="block py-2 text-sm text-foreground/70 hover:text-[color:var(--brand-red)]"
                       >
                         {c.label}
                       </Link>
@@ -157,7 +149,7 @@ export function Header() {
             <Link
               to="/contato"
               onClick={() => setOpen(false)}
-              className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground"
+              className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-[color:var(--brand-red)] px-4 py-3 text-sm font-bold text-white"
             >
               Fale conosco
             </Link>

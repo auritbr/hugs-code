@@ -37,6 +37,8 @@ function Equipe() {
         title="Pessoas que transformam ideias em ação"
         description="Conheça as pessoas dedicadas a construir cotidianamente o Ponto de Cultura: diretoria, coordenação, educadoras, artesãs e parceiros."
         crumbs={[{ label: "Início", to: "/" }, { label: "Quem Somos", to: "/quem-somos" }, { label: "Equipe" }]}
+        tone="green"
+        image="https://images.unsplash.com/photo-1611095973763-414019e72400?auto=format&fit=crop&w=800&q=80"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
