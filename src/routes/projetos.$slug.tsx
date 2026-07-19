@@ -42,7 +42,7 @@ const colorMap = {
 } as const;
 
 function ProjectPage() {
-  const { project } = Route.useLoaderData();
+  const { project } = Route.useLoaderData() as { project: Project };
   const [idx, setIdx] = useState<number | null>(null);
   const color = colorMap[project.color];
   const galleryPhotos = project.gallery.map((src) => ({ src, caption: project.title }));
