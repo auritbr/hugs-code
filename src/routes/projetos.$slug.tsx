@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/site/PageHeader";
 import { Lightbox } from "@/components/site/Lightbox";
 import { getProject, type Project } from "@/data/projects";
 import { useState } from "react";
-import { ArrowRight, Scissors, Palette, Tag, Sparkles, Package, Camera, Circle, Square, Star, Heart, Flower2, Leaf } from "lucide-react";
+import { ArrowRight, Scissors, Palette, Tag, Sparkles, Package, Camera, Circle, Square, Star, Heart, Flower2, Leaf, Coins } from "lucide-react";
 import { StitchLine, ThreadLine } from "@/components/site/CraftGraphics";
 
 export const Route = createFileRoute("/projetos/$slug")({
@@ -43,14 +43,11 @@ const colorMap = {
   gold: "var(--brand-gold)", turquoise: "var(--brand-turquoise)",
 } as const;
 
-const activityIconsBySlug: Record<string, React.ComponentType<{ className?: string }>[]> = {
+const activityIconsBySlug: Record<string, Array<React.ComponentType<{ className?: string }>>> = {
   "fios-da-memoria": [Circle, Sparkles, Scissors, Square, Star, Heart],
   "barro-forma-identidade": [Flower2, Circle, Sparkles, Palette, Leaf, Star],
-  "artesanato-que-gera-renda": [Tag, Sparkles, Package, Coins as any, Camera, Star],
+  "artesanato-que-gera-renda": [Tag, Sparkles, Package, Coins, Camera, Star],
 };
-
-// import Coins separately to avoid the `as any` above breaking
-import { Coins } from "lucide-react";
 
 function ProjectPage() {
   const { project } = Route.useLoaderData() as { project: Project };
