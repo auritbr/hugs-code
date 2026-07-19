@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { team } from "@/data/team";
 import { StitchLine, ThreadLine, ArcShape, BlobShape } from "@/components/site/CraftGraphics";
-import { HandHeart, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/quem-somos/equipe")({
   head: () => ({

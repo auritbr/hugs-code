@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Lightbox } from "@/components/site/Lightbox";
 import { getProject, type Project } from "@/data/projects";
-import { useState } from "react";
+import { useState, type ComponentType } from "react";
 import { ArrowRight, Scissors, Palette, Tag, Sparkles, Package, Camera, Circle, Square, Star, Heart, Flower2, Leaf, Coins } from "lucide-react";
 import { StitchLine, ThreadLine } from "@/components/site/CraftGraphics";
 
@@ -43,7 +43,7 @@ const colorMap = {
   gold: "var(--brand-gold)", turquoise: "var(--brand-turquoise)",
 } as const;
 
-const activityIconsBySlug: Record<string, Array<React.ComponentType<{ className?: string }>>> = {
+const activityIconsBySlug: Record<string, Array<ComponentType<{ className?: string }>>> = {
   "fios-da-memoria": [Circle, Sparkles, Scissors, Square, Star, Heart],
   "barro-forma-identidade": [Flower2, Circle, Sparkles, Palette, Leaf, Star],
   "artesanato-que-gera-renda": [Tag, Sparkles, Package, Coins, Camera, Star],
