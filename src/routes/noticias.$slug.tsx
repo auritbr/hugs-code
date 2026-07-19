@@ -70,13 +70,13 @@ function NewsArticle() {
       </section>
 
       <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-4 pb-4 text-sm text-muted-foreground">
           <span className="inline-flex items-center gap-1.5"><User className="h-4 w-4" />{article.author}</span>
           <span className="inline-flex items-center gap-1.5"><Calendar className="h-4 w-4" />{new Date(article.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</span>
           <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" />{article.readingMinutes} min de leitura</span>
         </div>
         <div className="flex flex-wrap items-center gap-2 border-b border-border pb-6 text-xs text-muted-foreground">
-          <span className="mr-2 mt-6 font-semibold uppercase tracking-wider">Compartilhar:</span>
+          <span className="mr-2 font-semibold uppercase tracking-wider">Compartilhar:</span>
           <ShareBtn href={`https://wa.me/?text=${shareText}%20${enc}`} label="WhatsApp" color="#25D366"><MessageCircle className="h-4 w-4" /></ShareBtn>
           <ShareBtn href={`https://www.facebook.com/sharer/sharer.php?u=${enc}`} label="Facebook" color="#1877F2"><Facebook className="h-4 w-4" /></ShareBtn>
           <ShareBtn href={`https://twitter.com/intent/tweet?text=${shareText}&url=${enc}`} label="X" color="#0F172A"><Twitter className="h-4 w-4" /></ShareBtn>
