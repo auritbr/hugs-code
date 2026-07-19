@@ -190,44 +190,43 @@ function ProjectPage() {
         </div>
       </section>
 
-      <section className="px-4 py-14 sm:px-6 lg:px-8">
+      <section className="px-4 py-10 sm:px-6 lg:px-8">
         <div
-          className="relative mx-auto grid w-full max-w-[1240px] overflow-hidden rounded-[28px] text-white lg:grid-cols-[1fr_auto]"
+          className="relative mx-auto grid w-full max-w-[1140px] overflow-hidden rounded-[24px] text-white lg:grid-cols-[1fr_34%]"
           style={{ backgroundColor: colorMap[project.cta.bg] }}
         >
-          <div className="relative px-6 py-12 sm:px-10 sm:py-14 lg:max-w-2xl lg:py-16">
-            {isFios && <ThreadLine className="pointer-events-none absolute left-6 top-6 h-2 w-32 opacity-70" color="#ffffff" />}
-            {isBarro && <div className="pointer-events-none absolute -left-6 top-6 h-16 w-16 rounded-full bg-white/10" aria-hidden />}
-            {isRenda && <span className="pointer-events-none absolute right-6 top-6 rounded bg-white/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest">Feira</span>}
+          <div className="relative px-6 py-8 sm:px-10 sm:py-10 lg:py-10">
+            {isFios && <ThreadLine className="pointer-events-none absolute left-6 top-4 h-2 w-24 opacity-70" color="#ffffff" />}
+            {isBarro && <div className="pointer-events-none absolute -left-4 top-4 h-10 w-10 rounded-full bg-white/10" aria-hidden />}
+            {isRenda && <span className="pointer-events-none absolute right-6 top-5 rounded bg-white/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest">Feira</span>}
 
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em]">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em]">
               <span className="h-1.5 w-1.5 rounded-full bg-white" /> {project.category}
             </div>
-            <h2 className="mt-4 font-display text-[28px] font-extrabold leading-tight sm:text-[34px] lg:text-[40px]">{project.cta.title}</h2>
-            <p className="mt-3 max-w-xl text-sm text-white/90 sm:text-base">{project.cta.text}</p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              {project.cta.buttons.map((b, i) => (
+            <h2 className="mt-3 font-display text-[26px] font-extrabold leading-tight sm:text-[30px] lg:text-[34px]">{project.cta.title}</h2>
+            <p className="mt-2 line-clamp-3 max-w-xl text-sm text-white/90">{project.cta.text}</p>
+            <div className="mt-4 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+              {project.cta.buttons.slice(0, 2).map((b, i) => (
                 <Link
                   key={b.label}
                   to={b.to}
-                  className={i === 0 ? "inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-foreground hover:bg-white/90" : "inline-flex items-center justify-center rounded-full border border-white/50 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"}
+                  className={i === 0 ? "inline-flex items-center justify-center rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-foreground hover:bg-white/90" : "inline-flex items-center justify-center rounded-full border border-white/50 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10"}
                 >
                   {b.label} {i === 0 && <ArrowRight className="ml-1 inline h-4 w-4" />}
                 </Link>
               ))}
             </div>
           </div>
-          <div className="relative min-h-[220px] lg:w-[38%] lg:min-h-full">
+          <div className="relative min-h-[180px] lg:min-h-full">
             <img src={project.cta.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
             <div
-              className="absolute inset-0 lg:bg-gradient-to-r"
-              style={{ background: `linear-gradient(to top, ${colorMap[project.cta.bg]} 0%, transparent 55%)` }}
+              className="absolute inset-0 lg:hidden"
+              style={{ background: `linear-gradient(to top, ${colorMap[project.cta.bg]} 0%, transparent 60%)` }}
             />
             <div
               className="absolute inset-0 hidden lg:block"
-              style={{ background: `linear-gradient(to right, ${colorMap[project.cta.bg]} 0%, transparent 45%)` }}
+              style={{ background: `linear-gradient(to right, ${colorMap[project.cta.bg]} 0%, transparent 40%)` }}
             />
-            {isFios && <div className="pointer-events-none absolute bottom-4 right-4 hidden h-12 w-12 -rotate-12 rounded-md border-2 border-dashed border-white/80 lg:block" aria-hidden />}
           </div>
         </div>
       </section>

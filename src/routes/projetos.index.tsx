@@ -86,38 +86,30 @@ function ProjetosIndex() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, i) => {
+        <div className="grid items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((p) => {
             const c = colorMap[p.color];
-            const rotations = ["-rotate-1", "rotate-1", "-rotate-1"];
-            const offset = ["md:mt-0", "md:mt-10", "md:mt-4"];
             return (
-              <article
-                key={p.slug}
-                className={`group relative ${offset[i % offset.length]}`}
-              >
-                {/* colored back plate */}
+              <article key={p.slug} className="group relative flex">
                 <div
-                  className={`absolute inset-0 translate-x-2 translate-y-2 rounded-[28px] ${rotations[i % rotations.length]}`}
-                  style={{ backgroundColor: c, opacity: 0.25 }}
-                  aria-hidden="true"
-                />
-                <div className="relative flex h-full flex-col overflow-hidden rounded-[28px] border-2 border-dashed bg-card shadow-sm transition group-hover:-translate-y-1 group-hover:shadow-xl" style={{ borderColor: c }}>
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  className="relative flex h-full w-full flex-col overflow-hidden rounded-[24px] border-2 border-dashed bg-card shadow-sm transition group-hover:-translate-y-1 group-hover:shadow-xl"
+                  style={{ borderColor: c }}
+                >
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <img src={p.hero} alt={p.title} className="h-full w-full object-cover transition group-hover:scale-105" />
-                    <BlobShape className="absolute -top-6 -right-6 h-24 w-24 opacity-90" color={c} />
+                    <BlobShape className="absolute -top-6 -right-6 h-20 w-20 opacity-90" color={c} />
                     <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-widest" style={{ color: c }}>{p.category}</span>
                   </div>
                   <StitchLine className="h-3 w-full" color={c} />
                   <div className="flex flex-1 flex-col p-6">
-                    <h3 className="font-display text-xl font-extrabold text-[color:var(--brand-petrol)]">{p.title}</h3>
+                    <h3 className="min-h-[3.5rem] font-display text-xl font-extrabold leading-tight text-[color:var(--brand-petrol)] line-clamp-2">{p.title}</h3>
                     <ThreadLine className="mt-2 h-2.5 w-20" color={c} />
-                    <p className="mt-3 text-sm text-muted-foreground">{p.summary}</p>
-                    <div className="mt-4 flex items-start gap-2 text-xs text-muted-foreground">
+                    <p className="mt-3 min-h-[5.5rem] text-sm text-muted-foreground line-clamp-4">{p.summary}</p>
+                    <div className="mt-4 flex min-h-[3.25rem] items-start gap-2 text-xs text-muted-foreground">
                       <Users className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: c }} />
-                      <span>{p.audience}</span>
+                      <span className="line-clamp-3">{p.audience}</span>
                     </div>
-                    <div className="mt-3 flex flex-wrap gap-1.5">
+                    <div className="mt-3 flex min-h-[3.5rem] flex-wrap content-start gap-1.5">
                       {p.techniques.slice(0, 4).map((t) => (
                         <span key={t} className="rounded-full px-2 py-0.5 text-[11px] font-medium" style={{ backgroundColor: `${c}20`, color: c }}>{t}</span>
                       ))}
@@ -125,10 +117,10 @@ function ProjetosIndex() {
                     <Link
                       to="/projetos/$slug"
                       params={{ slug: p.slug }}
-                      className="mt-6 inline-flex items-center gap-2 self-start rounded-full px-4 py-2 text-sm font-bold text-white transition group-hover:translate-x-1"
+                      className="mt-auto inline-flex items-center gap-2 self-start rounded-full px-4 py-2 text-sm font-bold text-white transition group-hover:translate-x-1"
                       style={{ backgroundColor: c }}
                     >
-                      Explore o projeto <ArrowRight className="h-4 w-4" />
+                      Conheça o projeto <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
                 </div>
@@ -138,10 +130,37 @@ function ProjetosIndex() {
         </div>
       </section>
 
-      <section className="bg-primary py-16 text-primary-foreground">
-        <div className="mx-auto flex max-w-7xl flex-col items-start gap-4 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <h2 className="text-2xl font-bold sm:text-3xl">Quer conhecer os detalhes de cada projeto?</h2>
-          <Link to="/contato" className="rounded-full bg-[color:var(--brand-gold)] px-5 py-3 text-sm font-semibold text-primary">Entre em contato</Link>
+      {/* CTA final compacto */}
+      <section className="px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="relative mx-auto grid w-full max-w-[1140px] overflow-hidden rounded-[24px] bg-[color:var(--brand-petrol)] text-white lg:grid-cols-[1fr_34%]">
+          <ArcShape className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 opacity-15" color="#E9B743" />
+          <div className="pointer-events-none absolute right-6 top-6 hidden h-3 w-3 rotate-12 rounded-sm bg-[#E85A52] sm:block" aria-hidden />
+          <div className="relative px-6 py-8 sm:px-10 sm:py-10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-gold)]" /> Projetos
+            </div>
+            <h2 className="mt-3 font-display text-[26px] font-extrabold leading-tight sm:text-[30px] lg:text-[36px]">
+              Cada projeto abre espaço para aprender, criar e compartilhar.
+            </h2>
+            <ThreadLine className="mt-3 h-2 w-20" color="#E9B743" />
+            <p className="mt-2 line-clamp-3 max-w-xl text-sm text-white/90">
+              Conheça as atividades realizadas, acompanhe as próximas ações e descubra como os diferentes saberes artesanais ganham forma em cada projeto.
+            </p>
+            <div className="mt-4 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+              <Link to="/projetos" className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--brand-gold)] px-4 py-2.5 text-sm font-semibold text-[color:var(--brand-petrol)] hover:opacity-90">
+                Conheça os projetos <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/contato" className="inline-flex items-center justify-center rounded-full border border-white/50 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
+                Entre em contato
+              </Link>
+            </div>
+          </div>
+          <div className="relative min-h-[180px] lg:min-h-full">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80" alt="" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-0 lg:hidden" style={{ background: "linear-gradient(to top, var(--brand-petrol) 0%, transparent 60%)" }} />
+            <div className="absolute inset-0 hidden lg:block" style={{ background: "linear-gradient(to right, var(--brand-petrol) 0%, transparent 40%)" }} />
+            <div className="pointer-events-none absolute bottom-3 right-3 hidden h-10 w-10 rotate-6 rounded-md bg-[#E85A52]/80 lg:block" aria-hidden />
+          </div>
         </div>
       </section>
     </>
