@@ -23,7 +23,8 @@ function QuemSomos() {
         title="Uma trajetória construída por mãos, memórias e oportunidades."
         description="Conheça as pessoas, valores e princípios que orientam o Ponto de Cultura desde a sua fundação."
         crumbs={[{ label: "Início", to: "/" }, { label: "Quem Somos" }]}
-        image="https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=800&q=80"
+        tone="orange"
+        image="https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=800&q=80"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
