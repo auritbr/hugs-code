@@ -67,7 +67,7 @@ export function FloatingWidgets() {
   return (
     <>
       {/* Left floating buttons */}
-      <div className="fixed bottom-3 left-3 z-40 flex flex-col gap-2 sm:bottom-4 sm:left-4">
+      <div className="fixed bottom-4 left-3 z-40 flex flex-col gap-2 sm:bottom-6 sm:left-4">
         <button
           onClick={() => setOpenCookie(true)}
           className="group grid h-10 w-10 place-items-center rounded-full bg-[color:var(--brand-petrol)] text-white shadow-lg hover:scale-105 transition sm:h-11 sm:w-11"
@@ -87,7 +87,7 @@ export function FloatingWidgets() {
       </div>
 
       {/* Right floating: WhatsApp + Back to top */}
-      <div className="fixed bottom-3 right-3 z-40 flex flex-col items-end gap-2 sm:bottom-4 sm:right-4">
+      <div className="fixed bottom-4 right-3 z-40 flex flex-col items-end gap-2 sm:bottom-6 sm:right-4">
         {showTop && (
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -111,7 +111,7 @@ export function FloatingWidgets() {
 
       {/* Cookie banner */}
       {showBanner && (
-        <div className="fixed inset-x-3 bottom-3 z-50 sm:inset-x-auto sm:right-4 sm:bottom-20 sm:max-w-md">
+        <div className="fixed inset-x-3 bottom-20 z-50 sm:inset-x-auto sm:right-4 sm:bottom-24 sm:max-w-md">
           <div className="rounded-xl border border-border bg-card p-4 shadow-2xl">
             <p className="text-sm text-foreground">
               Usamos cookies para melhorar sua experiência e analisar o uso do site. Você pode aceitar todos, apenas os essenciais ou personalizar suas preferências.

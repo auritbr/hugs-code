@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Youtube, Linkedin, MapPin, Phone, Mail, Clock } from "lucide-react";
-import { site, partners } from "@/data/site";
+import { site } from "@/data/site";
 import { Logo } from "./Logo";
 import { WaveDivider, ThreadLine } from "./CraftGraphics";
 
@@ -57,17 +57,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8">
-          <div className="craft-stitch mb-6 text-[color:var(--brand-gold)]/60" />
-          <div className="text-xs uppercase tracking-widest text-[color:var(--brand-gold)]">Parceiros e apoiadores</div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {partners.map((p) => (
-              <span key={p} className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs">{p}</span>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs opacity-80 sm:flex-row sm:items-center sm:justify-between">
+        <div className="craft-stitch mt-12 text-[color:var(--brand-gold)]/60" />
+        <div className="mt-6 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs opacity-80 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Ponto de Cultura. Todos os direitos reservados.</p>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <Link to="/politica-de-privacidade" className="hover:opacity-100">Política de Privacidade</Link>

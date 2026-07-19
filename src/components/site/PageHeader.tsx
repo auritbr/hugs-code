@@ -31,7 +31,7 @@ export function PageHeader({
         <ConcentricRings className="absolute -bottom-16 -left-10 h-80 w-80 opacity-40" color="var(--brand-petrol)" />
         <div className="absolute right-8 bottom-6 h-3 w-24 craft-diagonal text-[color:var(--brand-red)] opacity-40" />
       </div>
-      <div className="relative mx-auto max-w-7xl px-4 pt-12 pb-16 sm:px-6 sm:pt-14 sm:pb-20 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 pt-8 pb-10 sm:px-6 sm:pt-10 sm:pb-12 lg:px-8">
         {crumbs && crumbs.length > 0 && (
           <nav aria-label="breadcrumb" className="mb-6 flex flex-wrap items-center gap-1.5 text-xs text-[color:var(--brand-petrol)]/70">
             {crumbs.map((c, i) => (
@@ -42,25 +42,25 @@ export function PageHeader({
             ))}
           </nav>
         )}
-        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
-          <div className="max-w-3xl">
+        <div className="grid items-center gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-10">
+          <div className="max-w-2xl">
             {eyebrow && (
               <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white" style={{ backgroundColor: color }}>
                 <span className="h-1.5 w-1.5 rounded-full bg-white" />
                 {eyebrow}
               </span>
             )}
-            <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] text-[color:var(--brand-petrol)] sm:text-5xl md:text-6xl">
+            <h1 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] text-[color:var(--brand-petrol)] sm:text-4xl md:text-5xl">
               {title}
             </h1>
-            <ThreadLine className="mt-5 h-3 w-40" color={color} />
-            {description && <p className="mt-5 max-w-2xl text-base text-foreground/75 sm:text-lg">{description}</p>}
+            <ThreadLine className="mt-4 h-3 w-32" color={color} />
+            {description && <p className="mt-4 max-w-xl text-sm text-foreground/75 sm:text-base line-clamp-3">{description}</p>}
           </div>
           {image && (
             <div className="relative hidden lg:block">
-              <div className="relative aspect-square w-full max-w-md">
-                <div className="absolute -top-4 -right-4 h-24 w-24 rounded-full" style={{ backgroundColor: color }} />
-                <div className="absolute -bottom-4 -left-4 h-16 w-16 rounded-full bg-[color:var(--brand-gold)]" />
+              <div className="relative ml-auto aspect-square w-full max-w-[280px]">
+                <div className="absolute -top-3 -right-3 h-16 w-16 rounded-full" style={{ backgroundColor: color }} />
+                <div className="absolute -bottom-3 -left-3 h-12 w-12 rounded-full bg-[color:var(--brand-gold)]" />
                 <div className="relative h-full w-full overflow-hidden rounded-[45%_55%_50%_50%/55%_50%_50%_45%] border-8 border-white shadow-2xl">
                   <img src={image} alt="" className="h-full w-full object-cover" />
                 </div>

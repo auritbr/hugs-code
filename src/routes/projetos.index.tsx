@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { projects } from "@/data/projects";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
+import { StitchLine, ThreadLine, BlobShape } from "@/components/site/CraftGraphics";
 
 export const Route = createFileRoute("/projetos/")({
   head: () => ({
@@ -20,7 +21,6 @@ const colorMap: Record<string, string> = {
 };
 
 function ProjetosIndex() {
-  const steps = ["Escuta", "Planejamento", "Formação", "Produção", "Apresentação", "Avaliação"];
   return (
     <>
       <PageHeader
@@ -32,66 +32,63 @@ function ProjetosIndex() {
         image="https://images.unsplash.com/photo-1610478920392-95888b0e5b21?auto=format&fit=crop&w=800&q=80"
       />
 
-      <section className="mx-auto max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         <p className="text-lg text-muted-foreground">
           Cada projeto do Ponto de Cultura é planejado a partir da escuta com o território e da experiência acumulada pelas mestras e mestres artesãos. As trilhas se articulam com respeito aos tempos de aprendizagem, valorizando processos coletivos e trocas entre gerações.
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-3">
-          {projects.map((p, i) => (
-            <article key={p.slug} className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img src={p.hero} alt={p.title} className="h-full w-full object-cover transition group-hover:scale-105" />
-                <div className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest" style={{ color: colorMap[p.color] }}>{p.category}</div>
-                {i === 0 && <div className="absolute -bottom-6 -right-6 h-24 w-24 rounded-full" style={{ backgroundColor: colorMap[p.color] }} />}
-                {i === 1 && <div className="absolute inset-x-0 bottom-0 h-4" style={{ backgroundColor: colorMap[p.color] }} />}
-                {i === 2 && <div className="absolute bottom-0 left-0 h-16 w-16 rounded-tr-3xl" style={{ backgroundColor: colorMap[p.color] }} />}
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-bold">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{p.summary}</p>
-                <div className="mt-4 text-xs text-muted-foreground">
-                  <div><strong className="text-foreground">Público:</strong> {p.audience}</div>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {p.techniques.slice(0, 4).map((t) => (
-                      <span key={t} className="rounded-full bg-secondary px-2 py-0.5">{t}</span>
-                    ))}
+      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((p, i) => {
+            const c = colorMap[p.color];
+            const rotations = ["-rotate-1", "rotate-1", "-rotate-1"];
+            const offset = ["md:mt-0", "md:mt-10", "md:mt-4"];
+            return (
+              <article
+                key={p.slug}
+                className={`group relative ${offset[i % offset.length]}`}
+              >
+                {/* colored back plate */}
+                <div
+                  className={`absolute inset-0 translate-x-2 translate-y-2 rounded-[28px] ${rotations[i % rotations.length]}`}
+                  style={{ backgroundColor: c, opacity: 0.25 }}
+                  aria-hidden="true"
+                />
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[28px] border-2 border-dashed bg-card shadow-sm transition group-hover:-translate-y-1 group-hover:shadow-xl" style={{ borderColor: c }}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img src={p.hero} alt={p.title} className="h-full w-full object-cover transition group-hover:scale-105" />
+                    <BlobShape className="absolute -top-6 -right-6 h-24 w-24 opacity-90" color={c} />
+                    <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-widest" style={{ color: c }}>{p.category}</span>
+                  </div>
+                  <StitchLine className="h-3 w-full" color={c} />
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-display text-xl font-extrabold text-[color:var(--brand-petrol)]">{p.title}</h3>
+                    <ThreadLine className="mt-2 h-2.5 w-20" color={c} />
+                    <p className="mt-3 text-sm text-muted-foreground">{p.summary}</p>
+                    <div className="mt-4 flex items-start gap-2 text-xs text-muted-foreground">
+                      <Users className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: c }} />
+                      <span>{p.audience}</span>
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {p.techniques.slice(0, 4).map((t) => (
+                        <span key={t} className="rounded-full px-2 py-0.5 text-[11px] font-medium" style={{ backgroundColor: `${c}20`, color: c }}>{t}</span>
+                      ))}
+                    </div>
+                    <Link
+                      to="/projetos/$slug"
+                      params={{ slug: p.slug }}
+                      className="mt-6 inline-flex items-center gap-2 self-start rounded-full px-4 py-2 text-sm font-bold text-white transition group-hover:translate-x-1"
+                      style={{ backgroundColor: c }}
+                    >
+                      Explore o projeto <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </div>
                 </div>
-                <Link to="/projetos/$slug" params={{ slug: p.slug }} className="mt-6 inline-flex items-center gap-1 text-sm font-semibold" style={{ color: colorMap[p.color] }}>
-                  Explore o projeto <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
-      </section>
-
-      <section className="bg-secondary/40 py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold">Como os projetos são construídos</h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-            {steps.map((s, i) => (
-              <div key={s} className="rounded-2xl border border-border bg-card p-5">
-                <div className="text-xs font-semibold text-[color:var(--brand-red)]">Etapa {i + 1}</div>
-                <div className="mt-1 font-bold">{s}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-6 md:grid-cols-3">
-          {[{ v: "1.200+", l: "participantes" }, { v: "40", l: "oficinas/ano" }, { v: "6", l: "áreas artesanais" }].map((s) => (
-            <div key={s.l} className="rounded-2xl border border-border bg-card p-6"><div className="text-3xl font-bold text-primary">{s.v}</div><div className="text-sm text-muted-foreground">{s.l}</div></div>
-          ))}
-        </div>
-        <blockquote className="mt-10 max-w-3xl rounded-2xl bg-[color:var(--brand-sand)] p-6 italic text-foreground">
-          “Aqui, cada projeto é uma escuta que se transforma em prática. É bonito ver como algo tão simples quanto uma linha pode mudar tantas histórias.” <div className="mt-3 not-italic text-sm text-muted-foreground">— Educadora do Ponto de Cultura</div>
-        </blockquote>
       </section>
 
       <section className="bg-primary py-16 text-primary-foreground">
