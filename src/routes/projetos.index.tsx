@@ -28,7 +28,8 @@ function ProjetosIndex() {
         title="Projetos que unem criação, memória e autonomia"
         description="Trilhas formativas construídas a partir do diálogo com o território, articulando técnicas artesanais, formação continuada e geração de oportunidades."
         crumbs={[{ label: "Início", to: "/" }, { label: "Projetos" }]}
-        image="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+        tone="red"
+        image="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80"
       />
 
       <section className="mx-auto max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
