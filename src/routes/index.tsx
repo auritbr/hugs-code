@@ -5,6 +5,10 @@ import { impactStats, partners } from "@/data/site";
 import { projects } from "@/data/projects";
 import { news } from "@/data/news";
 import { ThreadLine, StitchLine, BlobShape, ConcentricRings, WaveDivider, TriangleBand, NeedleIcon, YarnIcon, PotteryIcon, ScissorsIcon, DotBadge } from "@/components/site/CraftGraphics";
+import craftEmbroidery from "@/assets/craft-embroidery.jpg";
+import craftCeramic from "@/assets/craft-ceramic.jpg";
+import craftWorkshop from "@/assets/craft-workshop.jpg";
+import craftPortrait from "@/assets/craft-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
