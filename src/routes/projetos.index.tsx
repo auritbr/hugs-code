@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { projects } from "@/data/projects";
-import { ArrowRight, Users } from "lucide-react";
-import { StitchLine, ThreadLine, BlobShape } from "@/components/site/CraftGraphics";
+import { ArrowRight, Users, Sparkles, HeartHandshake, Palette, Coins } from "lucide-react";
+import { StitchLine, ThreadLine, BlobShape, ArcShape } from "@/components/site/CraftGraphics";
 
 export const Route = createFileRoute("/projetos/")({
   head: () => ({
@@ -32,13 +32,60 @@ function ProjetosIndex() {
         image="https://images.unsplash.com/photo-1610478920392-95888b0e5b21?auto=format&fit=crop&w=1600&q=80"
       />
 
-      <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-        <p className="text-lg text-muted-foreground">
-          Cada projeto do Ponto de Cultura é planejado a partir da escuta com o território e da experiência acumulada pelas mestras e mestres artesãos. As trilhas se articulam com respeito aos tempos de aprendizagem, valorizando processos coletivos e trocas entre gerações.
-        </p>
+      {/* Nova seção de apresentação dos projetos */}
+      <section className="relative overflow-hidden bg-[color:var(--brand-sand)]/50 py-14 sm:py-16">
+        <ArcShape className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 opacity-25" color="#E85A52" />
+        <BlobShape className="pointer-events-none absolute -bottom-16 -left-10 h-56 w-56 opacity-20" color="#36B7D4" />
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-14 lg:px-8">
+          <div>
+            <div className="text-[11px] font-bold uppercase tracking-[0.24em] text-[color:var(--brand-red)]">Nossos projetos</div>
+            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-[color:var(--brand-petrol)] sm:text-4xl">
+              Saberes que se transformam em experiências, criações e oportunidades.
+            </h2>
+            <ThreadLine className="mt-4 h-2.5 w-24" color="#E85A52" />
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+              Cada projeto nasce do encontro entre conhecimentos tradicionais, novas possibilidades de criação e as necessidades da comunidade. As atividades integram formação, convivência e produção artesanal, valorizando diferentes técnicas e trajetórias.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Linhas, tecidos, argila, tintas e fibras tornam-se instrumentos de expressão, autonomia e fortalecimento cultural.
+            </p>
+            <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+              {[
+                { Icon: Palette, label: "Formação artesanal", c: "#E85A52" },
+                { Icon: Sparkles, label: "Valorização da memória", c: "#E9B743" },
+                { Icon: HeartHandshake, label: "Criação coletiva", c: "#36B7D4" },
+                { Icon: Coins, label: "Geração de oportunidades", c: "#A8C957" },
+              ].map(({ Icon, label, c }) => (
+                <li key={label} className="flex items-center gap-3 rounded-xl bg-white/70 px-3 py-2">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg" style={{ backgroundColor: `${c}22`, color: c }}>
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span className="text-sm font-medium text-[color:var(--brand-petrol)]">{label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative mx-auto grid w-full max-w-md grid-cols-6 grid-rows-6 gap-3 lg:max-w-none">
+            <div className="col-span-4 row-span-4 overflow-hidden rounded-[2.5rem] rounded-tr-[1rem] border-4 border-white shadow-md">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="Pessoa bordando" className="h-full w-full object-cover" loading="lazy" />
+            </div>
+            <div className="col-span-2 row-span-3 col-start-5 overflow-hidden rounded-[1.5rem] rounded-bl-[2rem] border-4 border-white shadow-md">
+              <img src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=600&q=80" alt="Mãos modelando argila" className="h-full w-full object-cover" loading="lazy" />
+            </div>
+            <div className="col-span-3 row-span-2 col-start-3 row-start-5 overflow-hidden rounded-[1.5rem] rounded-tr-[2rem] border-4 border-white shadow-md">
+              <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=80" alt="Artesãos em feira" className="h-full w-full object-cover" loading="lazy" />
+            </div>
+            <div className="col-span-2 row-span-2 col-start-1 row-start-5 grid place-items-center rounded-2xl bg-[#E9B743]/70">
+              <Palette className="h-8 w-8 text-[color:var(--brand-petrol)]" />
+            </div>
+            <div className="col-span-2 row-span-2 col-start-5 row-start-4 grid place-items-center rounded-full bg-[#36B7D4]/25">
+              <Sparkles className="h-7 w-7 text-[color:var(--brand-petrol)]" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => {
             const c = colorMap[p.color];
