@@ -30,6 +30,8 @@ export function Footer() {
             <ul className="mt-4 space-y-2 text-sm">
               <li><Link to="/" className="opacity-80 hover:opacity-100">Início</Link></li>
               <li><Link to="/quem-somos" className="opacity-80 hover:opacity-100">Quem Somos</Link></li>
+              <li><Link to="/quem-somos/nossa-historia" className="opacity-80 hover:opacity-100">Nossa História</Link></li>
+              <li><Link to="/quem-somos/equipe" className="opacity-80 hover:opacity-100">Equipe</Link></li>
               <li><Link to="/noticias" className="opacity-80 hover:opacity-100">Notícias</Link></li>
               <li><Link to="/galeria" className="opacity-80 hover:opacity-100">Galeria</Link></li>
               <li><Link to="/contato" className="opacity-80 hover:opacity-100">Contato</Link></li>
