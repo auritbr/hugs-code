@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getNews, news, type NewsItem } from "@/data/news";
 import { Lightbox } from "@/components/site/Lightbox";
-import { Calendar, Clock, User, ChevronRight, ArrowLeft, Facebook, Linkedin, Twitter, Mail, Link as LinkIcon, MessageCircle } from "lucide-react";
+import { Calendar, Clock, User, ArrowLeft, Facebook, Linkedin, Twitter, Mail, Link as LinkIcon, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/noticias/$slug")({
@@ -53,31 +53,30 @@ function NewsArticle() {
           <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--brand-petrol)] via-[color:var(--brand-petrol)]/85 to-[color:var(--brand-petrol)]/50" />
         </div>
         <div className="mx-auto max-w-5xl px-4 pt-10 pb-14 text-white sm:px-6 sm:pt-14 sm:pb-20 lg:px-8">
-          <nav aria-label="breadcrumb" className="flex flex-wrap items-center gap-1.5 text-xs text-white/80">
-            <Link to="/" className="hover:text-[color:var(--brand-gold)]">Início</Link>
-            <ChevronRight className="h-3 w-3" />
-            <Link to="/noticias" className="hover:text-[color:var(--brand-gold)]">Notícias</Link>
-            <ChevronRight className="h-3 w-3" />
-            <span className="line-clamp-1 max-w-[240px] font-semibold">{article.title}</span>
-          </nav>
-          <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-red)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em]">
-            <span className="h-1.5 w-1.5 rounded-full bg-white" /> {article.tag}
-          </span>
+          <Link to="/noticias" className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/85 hover:text-[color:var(--brand-gold)]">
+            <ArrowLeft className="h-3.5 w-3.5" /> Voltar para Notícias
+          </Link>
+          <div className="mt-5 flex flex-wrap items-center gap-3 text-xs">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-red)] px-3 py-1 font-bold uppercase tracking-[0.18em]">
+              <span className="h-1.5 w-1.5 rounded-full bg-white" /> {article.tag}
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-white/85"><Calendar className="h-3.5 w-3.5" />{new Date(article.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</span>
+          </div>
           <h1 className="mt-4 max-w-3xl font-display text-3xl font-extrabold leading-[1.1] sm:text-4xl md:text-5xl">
             {article.title}
           </h1>
           <p className="mt-4 max-w-2xl text-base text-white/85 sm:text-lg">{article.subtitle}</p>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/85">
-            <span className="inline-flex items-center gap-1.5"><Calendar className="h-4 w-4" />{new Date(article.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</span>
-            <span className="inline-flex items-center gap-1.5"><User className="h-4 w-4" />{article.author}</span>
-            <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" />{article.readingMinutes} min de leitura</span>
-          </div>
         </div>
       </section>
 
       <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5"><User className="h-4 w-4" />{article.author}</span>
+          <span className="inline-flex items-center gap-1.5"><Calendar className="h-4 w-4" />{new Date(article.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</span>
+          <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" />{article.readingMinutes} min de leitura</span>
+        </div>
         <div className="flex flex-wrap items-center gap-2 border-b border-border pb-6 text-xs text-muted-foreground">
-          <span className="mr-2 font-semibold uppercase tracking-wider">Compartilhar:</span>
+          <span className="mr-2 mt-6 font-semibold uppercase tracking-wider">Compartilhar:</span>
           <ShareBtn href={`https://wa.me/?text=${shareText}%20${enc}`} label="WhatsApp" color="#25D366"><MessageCircle className="h-4 w-4" /></ShareBtn>
           <ShareBtn href={`https://www.facebook.com/sharer/sharer.php?u=${enc}`} label="Facebook" color="#1877F2"><Facebook className="h-4 w-4" /></ShareBtn>
           <ShareBtn href={`https://twitter.com/intent/tweet?text=${shareText}&url=${enc}`} label="X" color="#0F172A"><Twitter className="h-4 w-4" /></ShareBtn>
