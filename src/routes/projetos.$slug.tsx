@@ -1,12 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Lightbox } from "@/components/site/Lightbox";
-import { getProject } from "@/data/projects";
+import { getProject, type Project } from "@/data/projects";
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/projetos/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { project: Project } => {
     const project = getProject(params.slug);
     if (!project) throw notFound();
     return { project };
