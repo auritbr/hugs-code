@@ -309,61 +309,6 @@ function Presentation() {
   );
 }
 
-function MissionVision() {
-  const cards = [
-    { title: "Missão", text: "Promover o desenvolvimento humano, cultural e social por meio do artesanato, da educação, da criatividade e da valorização dos conhecimentos comunitários.", Icon: HandHeart, color: "var(--brand-red)", bg: "#FFE9E9" },
-    { title: "Visão", text: "Ser reconhecida como referência na preservação de saberes, na formação de artesãos e na criação de oportunidades por meio da cultura.", Icon: Palette, color: "var(--brand-orange)", bg: "#FFEEDA" },
-    { title: "Valores", text: "Respeito, ética, diversidade, cooperação, sustentabilidade, criatividade, transparência e compromisso com a comunidade.", Icon: Users, color: "var(--brand-turquoise)", bg: "#DDF4FB" },
-  ];
-  return (
-    <section className="relative bg-[color:var(--brand-petrol)] py-24 text-white overflow-hidden">
-      <div className="craft-weave absolute inset-0 text-white/50" aria-hidden="true" />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-gold)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-[color:var(--brand-petrol)]">Propósito</span>
-          <h2 className="mt-4 font-display text-4xl font-extrabold sm:text-5xl">Missão, visão e <span className="text-[color:var(--brand-gold)]">valores</span></h2>
-        </div>
-        <div className="relative mt-14 grid gap-6 md:grid-cols-3">
-          {cards.map(({ title, text, Icon, color, bg }, i) => (
-            <div key={title} className="relative flex flex-col rounded-3xl p-7 text-[color:var(--brand-petrol)] shadow-xl transition hover:-translate-y-1" style={{ background: bg, transform: `rotate(${i === 1 ? 0 : i === 0 ? -1.5 : 1.5}deg)` }}>
-              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg" style={{ backgroundColor: color }}>
-                <Icon className="h-7 w-7" />
-              </div>
-              <h3 className="font-display text-2xl font-extrabold">{title}</h3>
-              <ThreadLine className="mt-2 h-2 w-24" color={color} />
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-[color:var(--brand-petrol)]/80">{text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ImpactNumbers() {
-  const colors = ["var(--brand-red)","var(--brand-orange)","var(--brand-gold)","var(--brand-green)","var(--brand-turquoise)"];
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-        <div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-turquoise)]/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-turquoise)]">Indicadores</span>
-          <h2 className="mt-3 font-display text-4xl font-extrabold text-[color:var(--brand-petrol)] sm:text-5xl">Números que refletem um <span className="text-[color:var(--brand-red)]">trabalho coletivo</span></h2>
-        </div>
-        <p className="max-w-md text-sm text-foreground/70">Cada dado abaixo representa ações construídas em parceria com participantes, educadores, comunidade e apoiadores.</p>
-      </div>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
-        {impactStats.map((s, i) => (
-          <div key={s.label} className="group relative overflow-hidden rounded-3xl bg-white p-6 shadow-md ring-1 ring-black/5 transition hover:-translate-y-1" style={{ borderTop: `6px solid ${colors[i % colors.length]}` }}>
-            <div className="font-display text-4xl font-extrabold text-[color:var(--brand-petrol)] sm:text-5xl">{s.value}</div>
-            <div className="mt-2 text-xs font-semibold text-foreground/70">{s.label}</div>
-            <span className="absolute -bottom-4 -right-4 h-14 w-14 rounded-full opacity-15" style={{ background: colors[i % colors.length] }} />
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function FeaturedProjects() {
   const colors: Record<string, string> = { red: "var(--brand-red)", orange: "var(--brand-orange)", green: "var(--brand-green)", petrol: "var(--brand-petrol)" };
   return (
