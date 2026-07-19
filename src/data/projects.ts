@@ -12,6 +12,16 @@ export type Project = {
   gallery: string[];
   ctaTitle: string;
   overview: string;
+  about: string[];
+  activities: { title: string; text: string; color: "red" | "orange" | "gold" | "green" | "turquoise" | "petrol" }[];
+  techniqueCards: { name: string; text: string }[];
+  cta: {
+    title: string;
+    text: string;
+    buttons: { label: string; to: string }[];
+    bg: "red" | "orange" | "petrol" | "green";
+    image: string;
+  };
 };
 
 export const projects: Project[] = [
