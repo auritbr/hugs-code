@@ -92,12 +92,12 @@ function Hero() {
 
           {/* foto principal — bordado */}
           <div className="absolute right-2 top-8 h-80 w-64 overflow-hidden rounded-[45%_55%_50%_50%/55%_50%_50%_45%] border-8 border-white shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80" alt="Artesã bordando à mão" className="h-full w-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1610478920392-95888b0e5b21?auto=format&fit=crop&w=800&q=80" alt="Artesã bordando à mão" className="h-full w-full object-cover" />
           </div>
 
           {/* foto secundária — cerâmica */}
           <div className="absolute bottom-2 left-2 h-56 w-56 overflow-hidden rounded-3xl border-8 border-white shadow-2xl rotate-[-4deg]">
-            <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=600&q=80" alt="Peça de cerâmica em modelagem" className="h-full w-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=600&q=80" alt="Peça de cerâmica em modelagem" className="h-full w-full object-cover" />
           </div>
 
           {/* card flutuante */}
@@ -136,7 +136,7 @@ function Presentation() {
           <div className="absolute -left-6 -top-6 h-32 w-32 rounded-full bg-[color:var(--brand-orange)]" />
           <div className="absolute -right-4 -bottom-4 h-20 w-20 rounded-full border-[6px] border-dashed border-[color:var(--brand-turquoise)]" />
           <div className="relative overflow-hidden rounded-3xl border-8 border-white shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=800&q=80" alt="Mulheres em oficina de tecelagem" className="h-[420px] w-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1611095973763-414019e72400?auto=format&fit=crop&w=800&q=80" alt="Mulheres em oficina de tecelagem" className="h-[420px] w-full object-cover" />
           </div>
           <StitchLine className="mt-6 h-2 w-64" color="var(--brand-red)" />
         </div>
@@ -347,9 +347,9 @@ function ProcessSteps() {
 function GalleryPreview() {
   const imgs = [
     "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1610478920392-95888b0e5b21?auto=format&fit=crop&w=600&q=80",
     "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=600&q=80",
     "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=600&q=80",
   ];
   return (
@@ -430,7 +430,7 @@ function Testimonial() {
       <div className="relative grid gap-10 rounded-[2.5rem] bg-gradient-to-br from-[color:var(--brand-gold)] to-[color:var(--brand-orange)] p-8 shadow-2xl lg:grid-cols-[300px_1fr] lg:items-center lg:p-12">
         <div className="craft-dots absolute inset-0 rounded-[2.5rem] text-white/25" />
         <div className="relative mx-auto h-60 w-60 overflow-hidden rounded-full border-8 border-white shadow-xl">
-          <img src="https://images.unsplash.com/photo-1594736797933-d0dabf9f2b57?auto=format&fit=crop&w=600&q=80" alt="Participante" className="h-full w-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1591189863430-ab87e120f312?auto=format&fit=crop&w=600&q=80" alt="Participante" className="h-full w-full object-cover" />
         </div>
         <div className="relative">
           <div className="font-display text-7xl font-extrabold leading-none text-[color:var(--brand-red)]">“</div>

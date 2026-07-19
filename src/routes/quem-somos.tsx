@@ -24,7 +24,7 @@ function QuemSomos() {
         description="Conheça as pessoas, valores e princípios que orientam o Ponto de Cultura desde a sua fundação."
         crumbs={[{ label: "Início", to: "/" }, { label: "Quem Somos" }]}
         tone="orange"
-        image="https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=800&q=80"
+        image="https://images.unsplash.com/photo-1611095973763-414019e72400?auto=format&fit=crop&w=800&q=80"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">

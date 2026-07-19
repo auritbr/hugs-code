@@ -29,7 +29,7 @@ function ProjetosIndex() {
         description="Trilhas formativas construídas a partir do diálogo com o território, articulando técnicas artesanais, formação continuada e geração de oportunidades."
         crumbs={[{ label: "Início", to: "/" }, { label: "Projetos" }]}
         tone="red"
-        image="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80"
+        image="https://images.unsplash.com/photo-1610478920392-95888b0e5b21?auto=format&fit=crop&w=800&q=80"
       />
 
       <section className="mx-auto max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
