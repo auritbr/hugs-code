@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { ArrowRight, HandHeart, Users, Palette, Leaf, Recycle, Sparkles, Award, HeartHandshake } from "lucide-react";
 
-export const Route = createFileRoute("/quem-somos")({
+export const Route = createFileRoute("/quem-somos/")({
   head: () => ({
     meta: [
       { title: "Quem Somos — Ponto de Cultura" },
