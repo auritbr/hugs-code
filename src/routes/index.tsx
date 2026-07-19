@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, Users, HandHeart, Palette, Sprout, Leaf, Brush, Package, TreeDeciduous, Recycle, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
-import { impactStats, partners } from "@/data/site";
+import { ArrowRight, Sprout, Leaf, Brush, Package, TreeDeciduous, Recycle, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { partners } from "@/data/site";
 import { projects } from "@/data/projects";
 import { news } from "@/data/news";
 import { ThreadLine, StitchLine, BlobShape, ConcentricRings, TriangleBand, NeedleIcon, YarnIcon, PotteryIcon, ScissorsIcon, DotBadge } from "@/components/site/CraftGraphics";
@@ -28,8 +28,6 @@ function Index() {
     <>
       <HeroCarousel />
       <Presentation />
-      <MissionVision />
-      <ImpactNumbers />
       <FeaturedProjects />
       <Techniques />
       <NewsSection />
