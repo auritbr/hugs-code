@@ -28,9 +28,6 @@ function NoticiasIndex() {
     });
   }, [tag, query]);
 
-  const featured = filtered[0];
-  const rest = filtered.slice(1);
-
   return (
     <>
       <PageHeader
@@ -71,31 +68,12 @@ function NoticiasIndex() {
         </div>
       </section>
 
-      {featured && (
-        <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
-          <Link to="/noticias/$slug" params={{ slug: featured.slug }} className="group grid gap-6 overflow-hidden rounded-3xl border border-border bg-card shadow-sm md:grid-cols-2">
-            <div className="aspect-[16/10] overflow-hidden md:aspect-auto">
-              <img src={featured.cover} alt={featured.title} className="h-full w-full object-cover transition group-hover:scale-105" />
-            </div>
-            <div className="flex flex-col justify-center p-8">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-red)]">Destaque · {featured.tag}</span>
-              <h2 className="mt-3 text-2xl font-bold sm:text-3xl">{featured.title}</h2>
-              <p className="mt-2 text-muted-foreground">{featured.excerpt}</p>
-              <div className="mt-4 flex items-center gap-4 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />{formatDate(featured.date)}</span>
-                <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{featured.readingMinutes} min</span>
-              </div>
-            </div>
-          </Link>
-        </section>
-      )}
-
       <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-        {rest.length === 0 ? (
+        {filtered.length === 0 ? (
           <p className="rounded-2xl border border-border bg-card p-8 text-center text-muted-foreground">Nenhuma notícia encontrada com esses filtros.</p>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {rest.map((n) => (
+            {filtered.map((n) => (
               <Link key={n.slug} to="/noticias/$slug" params={{ slug: n.slug }} className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={n.cover} alt={n.title} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" />
