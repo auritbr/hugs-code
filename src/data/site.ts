@@ -25,11 +25,14 @@ export const impactStats = [
   { value: "12", label: "parceiros institucionais" },
 ];
 
-export const partners = [
-  "Instituto Cultura Viva",
-  "Fundação Saberes",
-  "Cooperativa das Mãos",
-  "SESC",
-  "Ministério da Cultura",
-  "Fundo Solidário",
-];
+export type Partner = {
+  name: string;
+  logo: string;
+  alt: string;
+  url?: string;
+  category?: string;
+};
+
+// Preencher com logomarcas reais. Enquanto estiver vazio, a seção
+// exibe apenas o estado administrativo na página inicial.
+export const partners: Partner[] = [];
