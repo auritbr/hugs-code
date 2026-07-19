@@ -55,7 +55,6 @@ function NoticiasIndex() {
         eyebrow="Notícias"
         title="Histórias, encontros e criações do nosso território"
         description="Acompanhe as ações, oficinas, feiras, conquistas e histórias que emergem do território."
-        crumbs={[{ label: "Início", to: "/" }, { label: "Notícias" }]}
         tone="orange"
         image="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80"
       />
