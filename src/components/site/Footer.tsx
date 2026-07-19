@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Youtube, Linkedin, MapPin, Phone, Mail, Clock } from "lucide-react";
-import { site, partners } from "@/data/site";
+import { site } from "@/data/site";
 import { Logo } from "./Logo";
 import { WaveDivider, ThreadLine } from "./CraftGraphics";
 
