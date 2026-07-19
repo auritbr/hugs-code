@@ -51,7 +51,7 @@ function ContatoPage() {
         description="Estamos disponíveis para parcerias, matrículas, imprensa, visitas e para escutar as ideias do território."
         crumbs={[{ label: "Início", to: "/" }, { label: "Contato" }]}
         tone="turquoise"
-        image="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80"
+        image="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1600&q=80"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">

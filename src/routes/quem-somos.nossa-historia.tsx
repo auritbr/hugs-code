@@ -48,7 +48,7 @@ function History() {
         description="Desde 2010, o Ponto de Cultura constrói um percurso que une saberes tradicionais, formação continuada e presença comunitária."
         crumbs={[{ label: "Início", to: "/" }, { label: "Quem Somos", to: "/quem-somos" }, { label: "Nossa História" }]}
         tone="gold"
-        image="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=80"
+        image="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1600&q=80"
       />
 
       <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">

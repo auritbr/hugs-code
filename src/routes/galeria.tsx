@@ -29,7 +29,7 @@ function GaleriaPage() {
         description="Registros das oficinas, feiras, encontros e vivências que compõem a memória viva do Ponto de Cultura."
         crumbs={[{ label: "Início", to: "/" }, { label: "Galeria" }]}
         tone="turquoise"
-        image="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=800&q=80"
+        image="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=1600&q=80"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -45,11 +45,6 @@ function GaleriaPage() {
               {y}
             </button>
           ))}
-        </div>
-
-        <div className="mt-8 max-w-3xl">
-          <h2 className="font-display text-3xl font-extrabold text-[color:var(--brand-petrol)]">Registros de {year}</h2>
-          <p className="mt-2 text-muted-foreground">{collection.description}</p>
         </div>
 
         <div className="mt-10 space-y-14">

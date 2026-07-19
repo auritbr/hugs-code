@@ -100,7 +100,12 @@ function NewsArticle() {
 
         {article.gallery.length > 0 && (
           <div className="mt-12">
-            <h2 className="font-display text-2xl font-bold text-[color:var(--brand-petrol)]">Galeria da matéria</h2>
+            <h2 className="font-display text-2xl font-bold text-[color:var(--brand-petrol)]">Galeria de fotos</h2>
+            <div className="mt-2 flex items-center gap-2">
+              <span className="inline-block h-1.5 w-14 rounded-full bg-[color:var(--brand-red)]" />
+              <span className="inline-block h-1.5 w-6 rounded-full bg-[color:var(--brand-gold)]" />
+              <span className="inline-block h-1.5 w-3 rounded-full bg-[color:var(--brand-turquoise)]" />
+            </div>
             <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3">
               {article.gallery.map((src, i) => (
                 <button key={i} onClick={() => setBox(i)} className="group aspect-[4/3] overflow-hidden rounded-xl">
