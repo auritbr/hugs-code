@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
-import { documents, transparencyCategories, transparencyYears } from "@/data/transparency";
+import { documents, transparencyYears } from "@/data/transparency";
 import { useMemo, useState } from "react";
-import { FileText, Download, Eye, Search } from "lucide-react";
+import { FileText, Download, Eye, Search, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/quem-somos/transparencia")({
@@ -18,18 +18,27 @@ export const Route = createFileRoute("/quem-somos/transparencia")({
 });
 
 function Transparencia() {
-  const [cat, setCat] = useState("Todas");
   const [year, setYear] = useState("Todos");
   const [q, setQ] = useState("");
+  const [open, setOpen] = useState<Record<string, boolean>>({});
 
   const filtered = useMemo(() => {
     return documents.filter((d) => {
-      const okCat = cat === "Todas" || d.category === cat;
       const okYear = year === "Todos" || d.year === year;
       const okQ = !q || d.name.toLowerCase().includes(q.toLowerCase());
-      return okCat && okYear && okQ;
+      return okYear && okQ;
     });
-  }, [cat, year, q]);
+  }, [year, q]);
+
+  const byCategory = useMemo(() => {
+    const map = new Map<string, typeof documents>();
+    filtered.forEach((d) => {
+      const arr = map.get(d.category) ?? [];
+      arr.push(d);
+      map.set(d.category, arr);
+    });
+    return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b, "pt-BR"));
+  }, [filtered]);
 
   return (
     <>
@@ -42,7 +51,7 @@ function Transparencia() {
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mb-8 grid gap-4 lg:grid-cols-[1fr_auto_auto]">
+        <div className="mb-6 grid gap-4 lg:grid-cols-[1fr_auto]">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
@@ -52,42 +61,56 @@ function Transparencia() {
               className="w-full rounded-full border border-border bg-background py-2.5 pl-10 pr-4 text-sm outline-none focus:border-primary"
             />
           </div>
-          <select value={cat} onChange={(e) => setCat(e.target.value)} className="rounded-full border border-border bg-background px-4 py-2.5 text-sm">
-            {transparencyCategories.map((c) => <option key={c}>{c}</option>)}
-          </select>
-          <select value={year} onChange={(e) => setYear(e.target.value)} className="rounded-full border border-border bg-background px-4 py-2.5 text-sm">
-            <option>Todos</option>
-            {transparencyYears.map((y) => <option key={y}>{y}</option>)}
-          </select>
+          <div className="flex flex-wrap gap-2">
+            {["Todos", ...transparencyYears].map((y) => (
+              <button key={y} onClick={() => setYear(y)} className={cn("rounded-full border px-3 py-1.5 text-xs font-semibold", year === y ? "border-transparent bg-[color:var(--brand-petrol)] text-white" : "border-border bg-card")}>{y}</button>
+            ))}
+          </div>
         </div>
 
-        <div className="mb-6 flex flex-wrap gap-2">
-          {["Todos", ...transparencyYears].map((y) => (
-            <button key={y} onClick={() => setYear(y)} className={cn("rounded-full border px-3 py-1 text-xs", year === y ? "border-primary bg-primary text-primary-foreground" : "border-border")}>{y}</button>
-          ))}
-        </div>
-
-        {filtered.length === 0 ? (
+        {byCategory.length === 0 ? (
           <div className="rounded-xl border border-dashed border-border bg-card p-10 text-center text-muted-foreground">
             Nenhum documento encontrado com os filtros selecionados.
           </div>
         ) : (
-          <div className="grid gap-3">
-            {filtered.map((d) => (
-              <div key={d.name} className="flex flex-col gap-3 rounded-xl border border-border bg-card p-4 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex min-w-0 gap-3">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"><FileText className="h-5 w-5" /></div>
-                  <div className="min-w-0">
-                    <div className="truncate font-medium">{d.name}</div>
-                    <div className="text-xs text-muted-foreground">{d.category} · {d.year} · {d.format} · {d.size}</div>
-                  </div>
+          <div className="space-y-3">
+            {byCategory.map(([category, docs]) => {
+              const isOpen = open[category] ?? true;
+              return (
+                <div key={category} className="overflow-hidden rounded-2xl border border-border bg-card">
+                  <button
+                    onClick={() => setOpen((o) => ({ ...o, [category]: !isOpen }))}
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left hover:bg-secondary/40"
+                    aria-expanded={isOpen}
+                  >
+                    <div className="min-w-0">
+                      <div className="font-display text-lg font-bold text-[color:var(--brand-petrol)]">{category}</div>
+                      <div className="text-xs text-muted-foreground">{docs.length} {docs.length === 1 ? "documento" : "documentos"}</div>
+                    </div>
+                    <ChevronDown className={cn("h-5 w-5 shrink-0 text-[color:var(--brand-petrol)] transition", isOpen && "rotate-180")} />
+                  </button>
+                  {isOpen && (
+                    <div className="border-t border-border">
+                      {docs.map((d) => (
+                        <div key={d.name} className="flex flex-col gap-3 border-b border-border/60 px-5 py-4 last:border-0 sm:flex-row sm:items-center sm:justify-between">
+                          <div className="flex min-w-0 gap-3">
+                            <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[color:var(--brand-turquoise)]/15 text-[color:var(--brand-turquoise)]"><FileText className="h-5 w-5" /></div>
+                            <div className="min-w-0">
+                              <div className="truncate font-medium">{d.name}</div>
+                              <div className="text-xs text-muted-foreground">{d.year} · {d.format} · {d.size}</div>
+                            </div>
+                          </div>
+                          <div className="flex shrink-0 gap-2">
+                            <a href={d.url} className="inline-flex items-center gap-1 rounded-md border border-border px-3 py-1.5 text-xs hover:bg-secondary"><Eye className="h-3.5 w-3.5" />Visualizar</a>
+                            <a href={d.url} className="inline-flex items-center gap-1 rounded-md bg-[color:var(--brand-petrol)] px-3 py-1.5 text-xs text-white hover:opacity-90"><Download className="h-3.5 w-3.5" />Baixar</a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                <div className="flex shrink-0 gap-2">
-                  <a href={d.url} className="inline-flex items-center gap-1 rounded-md border border-border px-3 py-1.5 text-xs hover:bg-secondary"><Eye className="h-3.5 w-3.5" />Visualizar</a>
-                  <a href={d.url} className="inline-flex items-center gap-1 rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground hover:bg-primary/90"><Download className="h-3.5 w-3.5" />Baixar</a>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 
