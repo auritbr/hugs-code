@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { news, newsTags } from "@/data/news";
 import { useMemo, useState } from "react";
-import { Search, Calendar, Clock } from "lucide-react";
+import { Search } from "lucide-react";
 
 export const Route = createFileRoute("/noticias/")({
   head: () => ({
