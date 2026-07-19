@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { ArrowRight, HandHeart, Users, Palette, Leaf, Recycle, Sparkles, Award, HeartHandshake } from "lucide-react";
+import { StitchLine, ThreadLine, ArcShape } from "@/components/site/CraftGraphics";
 
 export const Route = createFileRoute("/quem-somos/")({
   head: () => ({
@@ -106,12 +107,47 @@ function QuemSomos() {
         </div>
       </section>
 
-      <section className="bg-primary py-16 text-primary-foreground">
-        <div className="mx-auto flex max-w-7xl flex-col items-start gap-4 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <h2 className="text-2xl font-bold sm:text-3xl">Conheça as pessoas e os projetos por trás do Ponto de Cultura.</h2>
-          <div className="flex flex-wrap gap-3">
-            <Link to="/quem-somos/equipe" className="rounded-full bg-[color:var(--brand-gold)] px-5 py-3 text-sm font-semibold text-primary">Conheça nossa equipe</Link>
-            <Link to="/projetos" className="rounded-full border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">Veja nossos projetos</Link>
+      <section className="px-4 py-14 sm:px-6 lg:px-8">
+        <div
+          className="relative mx-auto grid w-full max-w-[1240px] overflow-hidden rounded-[28px] text-white lg:grid-cols-[1fr_auto]"
+          style={{ backgroundColor: "var(--brand-petrol)" }}
+        >
+          <div className="relative px-6 py-12 sm:px-10 sm:py-14 lg:max-w-2xl lg:py-16">
+            <ArcShape className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 opacity-15" color="#E9B743" />
+            <div className="pointer-events-none absolute right-6 top-6 hidden h-4 w-4 rotate-12 rounded-sm bg-[#E85A52] sm:block" aria-hidden />
+            <div className="pointer-events-none absolute right-14 top-10 hidden h-3 w-3 rounded-full bg-[#36B7D4] sm:block" aria-hidden />
+
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-gold)]" /> Nossa história
+            </div>
+            <h2 className="mt-4 font-display text-[26px] font-extrabold leading-tight sm:text-[32px] lg:text-[38px]">
+              Uma história construída por muitas mãos continua a ganhar novos capítulos.
+            </h2>
+            <ThreadLine className="mt-4 h-2 w-24" color="#E9B743" />
+            <p className="mt-4 max-w-xl text-sm text-white/90 sm:text-base">
+              Conheça quem faz parte dessa trajetória, acompanhe os projetos e descubra como os saberes artesanais seguem fortalecendo vínculos e criando oportunidades.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link to="/quem-somos/equipe" className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--brand-gold)] px-5 py-3 text-sm font-semibold text-[color:var(--brand-petrol)] hover:opacity-90">
+                Conheça nossa equipe <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/projetos" className="inline-flex items-center justify-center rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                Explore os projetos
+              </Link>
+            </div>
+          </div>
+          <div className="relative min-h-[240px] lg:w-[40%] lg:min-h-full">
+            <img
+              src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80"
+              alt="Grupo em oficina do Ponto de Cultura"
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 lg:hidden" style={{ background: "linear-gradient(to top, var(--brand-petrol) 0%, transparent 55%)" }} />
+            <div className="absolute inset-0 hidden lg:block" style={{ background: "linear-gradient(to right, var(--brand-petrol) 0%, transparent 45%)" }} />
+            <div className="pointer-events-none absolute bottom-4 right-4 hidden h-14 w-14 rotate-6 rounded-md bg-[#E85A52]/80 lg:block" aria-hidden />
+            <div className="pointer-events-none absolute bottom-16 right-20 hidden h-10 w-10 rounded-full bg-[#E9B743]/80 lg:block" aria-hidden />
+            <StitchLine className="pointer-events-none absolute left-4 top-4 hidden h-2 w-32 lg:block" color="#ffffff" />
           </div>
         </div>
       </section>
