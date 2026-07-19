@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Lightbox } from "@/components/site/Lightbox";
-import { galleryByYear, galleryYears } from "@/data/gallery";
+import { galleryByYear, galleryYears, type GalleryPhoto } from "@/data/gallery";
 import { useState } from "react";
 
 export const Route = createFileRoute("/galeria")({
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/galeria")({
 
 function GaleriaPage() {
   const [year, setYear] = useState(galleryYears[0]);
-  const [idx, setIdx] = useState<number | null>(null);
+  const [box, setBox] = useState<{ photos: GalleryPhoto[]; index: number } | null>(null);
   const collection = galleryByYear[year];
 
   return (
@@ -48,26 +48,44 @@ function GaleriaPage() {
         </div>
 
         <div className="mt-8 max-w-3xl">
-          <h2 className="text-2xl font-bold">{collection.title}</h2>
+          <h2 className="font-display text-3xl font-extrabold text-[color:var(--brand-petrol)]">Registros de {year}</h2>
           <p className="mt-2 text-muted-foreground">{collection.description}</p>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-          {collection.photos.map((p, i) => (
-            <button key={i} onClick={() => setIdx(i)} className="group aspect-square overflow-hidden rounded-xl">
-              <img src={p.src} alt={p.caption} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" />
-            </button>
+        <div className="mt-10 space-y-14">
+          {collection.groups.map((g, gi) => (
+            <div key={gi} className="relative">
+              <div className="flex flex-wrap items-end justify-between gap-3 border-b-2 border-dashed border-[color:var(--brand-turquoise)]/40 pb-3">
+                <div>
+                  <span className="inline-block rounded-full bg-[color:var(--brand-turquoise)]/15 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[color:var(--brand-turquoise)]">{g.date}</span>
+                  <h3 className="mt-2 font-display text-2xl font-bold text-[color:var(--brand-petrol)]">{g.title}</h3>
+                  <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{g.description}</p>
+                </div>
+                <span className="text-xs text-muted-foreground">{g.photos.length} fotos</span>
+              </div>
+              <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+                {g.photos.map((p, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setBox({ photos: g.photos, index: i })}
+                    className="group aspect-square overflow-hidden rounded-xl"
+                  >
+                    <img src={p.src} alt={p.caption} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" />
+                  </button>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
-      {idx !== null && (
+      {box && (
         <Lightbox
-          photos={collection.photos}
-          index={idx}
-          onClose={() => setIdx(null)}
-          onPrev={() => setIdx((i) => (i === null ? 0 : (i + collection.photos.length - 1) % collection.photos.length))}
-          onNext={() => setIdx((i) => (i === null ? 0 : (i + 1) % collection.photos.length))}
+          photos={box.photos}
+          index={box.index}
+          onClose={() => setBox(null)}
+          onPrev={() => setBox((b) => (b ? { ...b, index: (b.index + b.photos.length - 1) % b.photos.length } : b))}
+          onNext={() => setBox((b) => (b ? { ...b, index: (b.index + 1) % b.photos.length } : b))}
         />
       )}
     </>
