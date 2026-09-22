@@ -71,7 +71,8 @@ export function Header() {
                 <div className="invisible absolute left-0 top-full min-w-[240px] pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">
                   <div className="rounded-2xl border border-border bg-popover p-2 shadow-xl">
                     <div className="craft-stitch mx-3 mb-2 mt-1 text-[color:var(--brand-red)]/60" />
-                    {"slug" in c ? (
+                    {item.children.map((c) =>
+                      "slug" in c ? (
                       <Link
                         key={c.label}
                         to="/projetos/$slug"
@@ -89,8 +90,8 @@ export function Header() {
                       >
                         {c.label}
                       </Link>
+                    )
                     )}
-                  </div>
                 </div>
               )}
             </div>
