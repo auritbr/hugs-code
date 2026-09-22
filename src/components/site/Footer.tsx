@@ -41,9 +41,9 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-[color:var(--brand-gold)]">Projetos</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><Link to="/projetos/fios-da-memoria" className="opacity-80 hover:opacity-100">Fios da Memória</Link></li>
-              <li><Link to="/projetos/barro-forma-identidade" className="opacity-80 hover:opacity-100">Barro, Forma e Identidade</Link></li>
-              <li><Link to="/projetos/artesanato-que-gera-renda" className="opacity-80 hover:opacity-100">Artesanato que Gera Renda</Link></li>
+              <li><Link to="/projetos/$slug" params={{ slug: "fios-da-memoria" }} className="opacity-80 hover:opacity-100">Fios da Memória</Link></li>
+              <li><Link to="/projetos/$slug" params={{ slug: "barro-forma-identidade" }} className="opacity-80 hover:opacity-100">Barro, Forma e Identidade</Link></li>
+              <li><Link to="/projetos/$slug" params={{ slug: "artesanato-que-gera-renda" }} className="opacity-80 hover:opacity-100">Artesanato que Gera Renda</Link></li>
               <li><Link to="/quem-somos/transparencia" className="opacity-80 hover:opacity-100">Transparência</Link></li>
             </ul>
           </div>

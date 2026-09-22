@@ -19,9 +19,9 @@ const nav = [
     label: "Projetos",
     to: "/projetos",
     children: [
-      { label: "Fios da Memória", to: "/projetos/fios-da-memoria" },
-      { label: "Barro, Forma e Identidade", to: "/projetos/barro-forma-identidade" },
-      { label: "Artesanato que Gera Renda", to: "/projetos/artesanato-que-gera-renda" },
+      { label: "Fios da Memória", slug: "fios-da-memoria" },
+      { label: "Barro, Forma e Identidade", slug: "barro-forma-identidade" },
+      { label: "Artesanato que Gera Renda", slug: "artesanato-que-gera-renda" },
     ],
   },
   { label: "Notícias", to: "/noticias" },
