@@ -143,16 +143,28 @@ export function Header() {
                 </div>
                 {item.children && mobileSub === item.to && (
                   <div className="pb-3 pl-4">
-                    {item.children.map((c) => (
-                      <Link
-                        key={c.to}
-                        to={c.to}
-                        onClick={() => setOpen(false)}
-                        className="block py-2 text-sm text-foreground/70 hover:text-[color:var(--brand-red)]"
-                      >
-                        {c.label}
-                      </Link>
-                    ))}
+                    {item.children.map((c) =>
+                      "slug" in c ? (
+                        <Link
+                          key={c.label}
+                          to="/projetos/$slug"
+                          params={{ slug: c.slug }}
+                          onClick={() => setOpen(false)}
+                          className="block py-2 text-sm text-foreground/70 hover:text-[color:var(--brand-red)]"
+                        >
+                          {c.label}
+                        </Link>
+                      ) : (
+                        <Link
+                          key={c.label}
+                          to={c.to}
+                          onClick={() => setOpen(false)}
+                          className="block py-2 text-sm text-foreground/70 hover:text-[color:var(--brand-red)]"
+                        >
+                          {c.label}
+                        </Link>
+                      ),
+                    )}
                   </div>
                 )}
               </div>
